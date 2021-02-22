@@ -35,28 +35,28 @@ class App extends Component {
               className="link"
               onClick={this.showMenu.bind(this, "Home")}
             >
-              Log in and registratiom
+              Login or Sign-Up
             </Link>
             <Link
               to="/option1"
               className="link"
               onClick={this.showMenu.bind(this, "Page1")}
             >
-              income and exponse
+              Enter Income and Expense
             </Link>
             <Link
               to="/option2"
               className="link"
               onClick={this.showMenu.bind(this, "Page2")}
             >
-              view financial
+              View Financial Data
             </Link>
             <Link
               to="/option3"
               className="link"
               onClick={this.showMenu.bind(this, "Page3")}
             >
-              invoice scheduler
+              Invoice Scheduler
             </Link>
           </div>
           <div id="main">

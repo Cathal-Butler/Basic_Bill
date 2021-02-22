@@ -3,7 +3,11 @@ import { withRouter } from "react-router-dom";
 
 class Home extends Component {
   render() {
-    return <div id="home">log in and registration</div>;
+    return (
+      <div id="home">
+        <h1>This is our Home Page</h1>
+      </div>
+    );
   }
 }
 

@@ -3,7 +3,11 @@ import { withRouter } from "react-router-dom";
 
 class Page2 extends Component {
   render() {
-    return <div id="page1">view financials</div>;
+    return (
+      <div id="page1">
+        <h1>This is the page where users view their financial data</h1>
+      </div>
+    );
   }
 }
 

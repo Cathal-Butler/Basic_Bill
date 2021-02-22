@@ -3,7 +3,11 @@ import { withRouter } from "react-router-dom";
 
 class Page3 extends Component {
   render() {
-    return <div id="page1">invoice and scheduler</div>;
+    return (
+      <div id="page1">
+        <h1>This is the Invoice Scheduler page</h1>
+      </div>
+    );
   }
 }
 
