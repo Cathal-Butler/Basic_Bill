@@ -6,6 +6,10 @@ class Page1 extends Component {
     return (
       <div id="page1">
         <h1>This is the page where users input their income and expenses </h1>
+        <form>
+          <label>Input Date of Expense: </label>
+          <input type="date"></input>
+        </form>
       </div>
     );
   }
