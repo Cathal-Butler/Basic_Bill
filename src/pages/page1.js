@@ -4,14 +4,21 @@ import { withRouter } from "react-router-dom";
 class Page1 extends Component {
   constructor(props) {
     super(props);
-    this.state = { expense: 0 }; //set expense amount inputted to be 0
+    this.state = { expense: "" }; //set expense amount inputted to be null
+    this.state = { income: "" }; //set income amount inputted to be null
     //inform React of event function
-    this.onSearchFormChange = this.onSearchFormChange.bind(this);
+    this.onExpenseFormChange = this.onExpenseFormChange.bind(this);
+    this.onInputFormChange = this.onInputFormChange.bind(this);
   } //end constructor
 
-  onSearchFormChange(event) {
+  onExpenseFormChange(event) {
     //assign the value of the number in the input box to expense
     this.setState({ expense: event.target.value });
+  }
+
+  onInputFormChange(event) {
+    //assign the value of the number in the input box to income
+    this.setState({ income: event.target.value });
   }
 
   render() {
@@ -20,11 +27,14 @@ class Page1 extends Component {
         <h1>Enter your data here: </h1>
 
         <Expense
-          expense={this.state.expense}
-          onFormChange={this.onSearchFormChange}
+          expense={this.state.expense} //Parent-Child Communication
+          onFormChange={this.onExpenseFormChange}
         />
 
-        <Income />
+        <Income
+          income={this.state.income} //Parent-child communication
+          onForm2Change={this.onInputFormChange}
+        />
       </div> //end of page1 div
     );
   }
@@ -50,7 +60,7 @@ class Expense extends Component {
             type="number"
             placeholder="€"
             value={expense}
-            onChange={onFormChange}
+            onChange={onFormChange} //Calls this function when
           />
         </form>
         <p>The amount entered is: €{expense}</p>
@@ -65,8 +75,10 @@ class Expense extends Component {
 //Component for entering income
 class Income extends Component {
   render() {
+    let income = this.props.income; //necessary for parent child communication
+    let onForm2Change = this.props.onForm2Change; //necessary for parent child communication
     return (
-      <div id="income">
+      <div>
         <h2>Income</h2>
         <form>
           <label>Input Date of Income: </label>
@@ -74,9 +86,16 @@ class Income extends Component {
         </form>
         <form>
           <label>Amount: </label>
-          <input type="number" placeholder="€" />
-          <button> Submit Income </button>
+          <input
+            type="number"
+            placeholder="€"
+            value={income}
+            onChange={onForm2Change} //Calls this function when input changed
+          />
         </form>
+        <p>The amount entered is: €{income}</p>
+        <p>If this is correct, click the button below to submit your data: </p>
+        <button> Submit Income </button>
       </div>
     );
   }
