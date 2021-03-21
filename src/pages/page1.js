@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class Page1 extends Component {
+  state = {
+    showExpense: false, //For hiding/showing expense on button Click
+    showIncome: false //For hiding/showing income on button click
+  };
+
   constructor(props) {
     super(props);
     this.state = { expense: "", income: "", date: "", datei: "" }; //track states of inputs
@@ -24,32 +29,56 @@ class Page1 extends Component {
   }
 
   onExpenseDateChange(event) {
-    //assign the value of the date in the date input box to date
+    //assign the value of the date in the expense date input box to date
     this.setState({ date: event.target.value });
   }
 
   onIncomeDateChange(event) {
+    //assign the value of the date in the income date input box to date
     this.setState({ datei: event.target.value });
   }
+
+  toggleExpenseHandler = () => {
+    //Will toggle the expense from hide/shown when button is clicked
+    const doesShowExpense = this.state.showExpense;
+    this.setState({ showExpense: !doesShowExpense });
+  };
+
+  toggleIncomeHandler = () => {
+    const doesShowIncome = this.state.showIncome;
+    this.setState({ showIncome: !doesShowIncome });
+  };
 
   render() {
     return (
       <div id="page1">
-        <h1>Enter your data here: </h1>
+        <h1>Please select income or expense: </h1>
+        <button onClick={this.toggleExpenseHandler}>Expense</button>
+        <button onClick={this.toggleIncomeHandler}>Income</button>
 
-        <Expense
-          expense={this.state.expense} //Parent-Child Communication
-          onFormChange={this.onExpenseFormChange}
-          date={this.state.date}
-          onDateChange={this.onExpenseDateChange}
-        />
+        {this.state.showExpense === true ? (
+          //Wrap expense component in a div so it can be hidden or shown using the ternary operator, if true, show it, else :null (hide it)
+          <div>
+            <Expense
+              expense={this.state.expense} //Parent-Child Communication
+              onFormChange={this.onExpenseFormChange}
+              date={this.state.date}
+              onDateChange={this.onExpenseDateChange}
+            />
+          </div>
+        ) : null}
 
-        <Income
-          income={this.state.income} //Parent-child communication
-          onForm2Change={this.onInputFormChange}
-          datei={this.state.datei}
-          onDateiChange={this.onIncomeDateChange}
-        />
+        {this.state.showIncome === true ? (
+          //Wrap income component in a div so it can be hidden or shown using the ternary operator.
+          <div>
+            <Income
+              income={this.state.income} //Parent-child communication
+              onForm2Change={this.onInputFormChange}
+              datei={this.state.datei}
+              onDateiChange={this.onIncomeDateChange}
+            />
+          </div>
+        ) : null}
       </div> //end of page1 div
     );
   }
