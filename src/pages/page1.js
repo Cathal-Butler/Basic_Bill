@@ -52,9 +52,19 @@ class Page1 extends Component {
   render() {
     return (
       <div id="page1">
-        <h1>Please select income or expense: </h1>
-        <button onClick={this.toggleExpenseHandler}>Expense</button>
-        <button onClick={this.toggleIncomeHandler}>Income</button>
+        <h1>Select Income or Expense: </h1>
+        <button
+          class="btn btn-secondary btn-lg btn-block"
+          onClick={this.toggleExpenseHandler}
+        >
+          Expense
+        </button>
+        <button
+          class="btn btn-secondary btn-lg btn-block"
+          onClick={this.toggleIncomeHandler}
+        >
+          Income
+        </button>
 
         {this.state.showExpense === true ? (
           //Wrap expense component in a div so it can be hidden or shown using the ternary operator, if true, show it, else :null (hide it)
@@ -93,7 +103,7 @@ class Expense extends Component {
     let onDateChange = this.props.onDateChange;
 
     return (
-      <div id="expense">
+      <div class="card-body">
         <h2>Expense</h2>
 
         <form>
@@ -115,7 +125,10 @@ class Expense extends Component {
         </p>
         <p>If this is correct, click the button below to submit your data: </p>
 
-        <button> Submit Expense </button>
+        <button class="btn btn-primary btn lg btn-block">
+          {" "}
+          Submit Expense{" "}
+        </button>
       </div>
     );
   }
@@ -130,7 +143,7 @@ class Income extends Component {
     let onDateiChange = this.props.onDateiChange;
 
     return (
-      <div>
+      <div class="card body">
         <h2>Income</h2>
 
         <form>
@@ -150,7 +163,10 @@ class Income extends Component {
           The amount entered is: €{income} on the [{datei}]
         </p>
         <p>If this is correct, click the button below to submit your data: </p>
-        <button> Submit Income </button>
+        <button class="btn btn-primary btn lg btn-block">
+          {" "}
+          Submit Income{" "}
+        </button>
       </div>
     );
   }

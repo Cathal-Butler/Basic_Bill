@@ -4,6 +4,7 @@ import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom";
 import $ from "jquery";
 import MenuBtn from "./image/MenuBtn.png";
 import home from "./pages/home";
+import "bootstrap/dist/css/bootstrap.css";
 import page1 from "./pages/page1";
 import page2 from "./pages/page2";
 import page3 from "./pages/page3";
