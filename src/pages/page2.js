@@ -1,11 +1,25 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { userData } from "./data.js";
+
+const data = userData;
 
 class Page2 extends Component {
   render() {
     return (
-      <div id="page1">
-        <h1>This is the page where users view their financial data</h1>
+      <div>
+        {data.map((data) => {
+          return (
+            <div>
+              <li>
+                <b>UserID: </b> {" " + data.userID + " "}
+                <b> Name: </b> {" " + data.name + " "}
+                <b> Expense: </b> {" " + data.expenses + " "}
+                <b> Income: </b> {" " + data.income + " "}{" "}
+              </li>
+            </div>
+          );
+        })}
       </div>
     );
   }
