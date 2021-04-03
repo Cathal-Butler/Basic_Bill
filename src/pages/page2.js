@@ -5,10 +5,16 @@ import { userData } from "./data.js";
 const data = userData;
 
 class Page2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { uArray: data };
+  }
+
   render() {
     return (
       <div>
-        {data.map((data) => {
+        <h1>Data Object (Map Function Test): </h1>
+        {this.state.uArray.map((data) => {
           return (
             <div>
               <li>
