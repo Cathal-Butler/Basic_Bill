@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <div className="App">
         <div id="nav">
-          <div id="menuText">Home</div>
+          <div id="menuText">Login/Sign-Up</div>
           <img
             id="menuBtn"
             src="https://images.unsplash.com/photo-1586941962765-d3896cc85ac8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
@@ -40,21 +40,21 @@ class App extends Component {
             <Link
               to="/option1"
               className="link"
-              onClick={this.showMenu.bind(this, "Page1")}
+              onClick={this.showMenu.bind(this, "Data Entry")}
             >
               Enter Income and Expense
             </Link>
             <Link
               to="/option2"
               className="link"
-              onClick={this.showMenu.bind(this, "Page2")}
+              onClick={this.showMenu.bind(this, "Your Financial Data")}
             >
               View Financial Data
             </Link>
             <Link
               to="/option3"
               className="link"
-              onClick={this.showMenu.bind(this, "Page3")}
+              onClick={this.showMenu.bind(this, "Invoice Scheduler")}
             >
               Invoice Scheduler
             </Link>
