@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import Expense from "./ExpenseComponent/ExpenseComponent";
+import Income from "./IncomeComponent/IncomeComponent";
 
 class Page1 extends Component {
   state = {
@@ -90,84 +92,6 @@ class Page1 extends Component {
           </div>
         ) : null}
       </div> //end of page1 div
-    );
-  }
-}
-
-//Component for entering expense
-class Expense extends Component {
-  render() {
-    let expense = this.props.expense; //necessary for parent-child communication
-    let onFormChange = this.props.onFormChange; //necessary for parent child communication
-    let date = this.props.date;
-    let onDateChange = this.props.onDateChange;
-
-    return (
-      <div class="card-body">
-        <h2>Expense</h2>
-
-        <form>
-          <label>Amount: </label>
-          <input
-            type="number"
-            placeholder="€"
-            value={expense}
-            onChange={onFormChange} //Calls this function when
-          />
-        </form>
-        <form>
-          <label>Input Date of Expense: </label>
-          <input type="date" value={date} onChange={onDateChange} />
-        </form>
-
-        <p>
-          The amount entered is: €{expense} on the [{date}]
-        </p>
-        <p>If this is correct, click the button below to submit your data: </p>
-
-        <button class="btn btn-primary btn lg btn-block">
-          {" "}
-          Submit Expense{" "}
-        </button>
-      </div>
-    );
-  }
-}
-
-//Component for entering income
-class Income extends Component {
-  render() {
-    let income = this.props.income; //necessary for parent child communication
-    let onForm2Change = this.props.onForm2Change; //necessary for parent child communication
-    let datei = this.props.datei;
-    let onDateiChange = this.props.onDateiChange;
-
-    return (
-      <div class="card body">
-        <h2>Income</h2>
-
-        <form>
-          <label>Amount: </label>
-          <input
-            type="number"
-            placeholder="€"
-            value={income}
-            onChange={onForm2Change} //Calls this function when input changed
-          />
-        </form>
-        <form>
-          <label>Input Date of Income: </label>
-          <input type="date" value={datei} onChange={onDateiChange}></input>
-        </form>
-        <p>
-          The amount entered is: €{income} on the [{datei}]
-        </p>
-        <p>If this is correct, click the button below to submit your data: </p>
-        <button class="btn btn-primary btn lg btn-block">
-          {" "}
-          Submit Income{" "}
-        </button>
-      </div>
     );
   }
 }
