@@ -3,20 +3,21 @@ import { withRouter } from "react-router-dom";
 import { userData } from "./data.js";
 
 const data = userData;
-
-function selectID(id) {
-  return id.userID < 5;
+function flexibleSelectID(id) {
+  return function (userObject) {
+    return userObject.userID === id;
+  };
 }
 
 class Page2 extends Component {
   render() {
-    console.log(data[0]);
+    console.log(data);
 
     return (
       <div className="App">
         <h1>Data Object (Map Function/Filter Function Test): </h1>
         <p>Test Paragraph </p>
-        {data.filter(selectID).map((d) => (
+        {data.filter(flexibleSelectID(9)).map((d) => (
           <div key={d.userID}>
             <li>
               <b>UserID: </b> {" " + d.userID + " "}
