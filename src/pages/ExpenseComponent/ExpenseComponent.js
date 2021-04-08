@@ -7,6 +7,12 @@ const expense = (props) => {
   let date = props.date;
   let onDateChange = props.onDateChange;
 
+  function submitAlert() {
+    alert(
+      "Hooray, you have submitted an expense of €" + expense + " on the " + date
+    );
+  }
+
   return (
     <div class="card-body">
       <h2>Expense</h2>
@@ -17,7 +23,7 @@ const expense = (props) => {
           type="number"
           placeholder="€"
           value={expense}
-          onChange={onFormChange} //Calls this function when
+          onChange={onFormChange}
         />
       </form>
       <form>
@@ -30,7 +36,10 @@ const expense = (props) => {
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
 
-      <button class="btn btn-primary btn lg btn-block"> Submit Expense </button>
+      <button onClick={submitAlert} class="btn btn-primary btn lg btn-block">
+        {" "}
+        Submit Expense{" "}
+      </button>
     </div>
   );
 };

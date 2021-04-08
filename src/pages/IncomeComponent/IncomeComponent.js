@@ -6,6 +6,11 @@ const income = (props) => {
   let datei = props.datei;
   let onDateiChange = props.onDateiChange;
 
+  function submitAlert() {
+    alert(
+      "Hooray, you have submitted an income of €" + income + " on the " + datei
+    );
+  }
   return (
     <div class="card body">
       <h2>Income</h2>
@@ -27,7 +32,10 @@ const income = (props) => {
         The amount entered is: €{income} on the [{datei}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
-      <button class="btn btn-primary btn lg btn-block"> Submit Income </button>
+      <button onClick={submitAlert} class="btn btn-primary btn lg btn-block">
+        {" "}
+        Submit Income{" "}
+      </button>
     </div>
   );
 };
