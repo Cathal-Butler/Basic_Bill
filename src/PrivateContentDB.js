@@ -1,24 +1,20 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+// import our configuration for firebase.
+import myFirebase from "./myFirebaseConfig";
 import Firebase from "firebase";
 
-// const data = userData;
-// function flexibleSelectID(id) {
-//   return function (userObject) {
-//     return userObject.userID === id;
-//   };
-// }
-
-class Page2 extends Component {
+class PrivateContentDB extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dbData: []
     };
     this.getMessagesFromDatabase = this.getMessagesFromDatabase.bind(this);
-    this.logOutUser = this.logOutUser.bind(this);
   } // end constructor
 
+  /*is invoked immediately after a component is mounted (inserted into the tree).
+  If you use setState, this will cause a re-render and the component will be
+  mounted again */
   componentDidMount() {
     // as soon as the component mounts, get the most recent messages from the firebase database.
 
@@ -49,15 +45,9 @@ class Page2 extends Component {
     }); // end of the on method
   } // end of getMessagesFromDatabase()
 
-  logOutUser() {
-    // Make a call to firebase authentication
-    // this API will log the user out now.
-    Firebase.auth().signOut();
-  }
-
   render() {
     return (
-      <div className="Logout">
+      <div className="PrivateContentDB">
         <h1>Private Content DB</h1>
 
         {this.state.dbData.length <= 0 && <p>Please wait ... data loading</p>}
@@ -73,10 +63,9 @@ class Page2 extends Component {
             </li>
           ))}
         </ul>
-        <button onClick={this.logOutUser}>Logout</button>
       </div>
     ); // end of return statement
   } // end of render function
 } // end of class
 
-export default withRouter(Page2);
+export default PrivateContentDB;
