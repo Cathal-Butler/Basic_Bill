@@ -128,8 +128,8 @@ class Page3 extends Component {
   render() {
     return (
       <div>
-        <input type="text" id="addValue" />
-        <input type="text" id="addDate" />
+        <input type="text" id="addValue" placeholder="Enter Bill's amount" />
+        <input type="text" id="addDate" placeholder="Enter bill's due date" />
         <button onClick={this.add}>add new invoice</button>
 
         <div>
