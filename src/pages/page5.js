@@ -33,8 +33,10 @@ class Page5 extends Component {
         let currObject = {
           userID: msgData[m].userID,
           details: {
-            name: msgData[m].details.name,
-            password: msgData[m].details.password
+            email: msgData[m].details.email,
+            password: msgData[m].details.password,
+            expenses: msgData[m].details.expenses,
+            income: msgData[m].details.income
           }
         };
         // add it to our newStateMessages array.
@@ -62,7 +64,11 @@ class Page5 extends Component {
             index //testing the map function on the data
           ) => (
             <li key={index}>
-              <b>{data.details.name}</b> <i>{data.details.password}</i>
+              <b> UserID: {data.details.userID} </b>{" "}
+              <b> Email: {data.details.email}</b>{" "}
+              <b> Password: {data.details.password} </b>
+              <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Income: {"€" + data.details.income + ","} </b>
             </li>
           ))}
         </ul>
