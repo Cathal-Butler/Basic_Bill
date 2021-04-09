@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Firebase from "firebase";
+
 class Logon extends Component {
   constructor(props) {
     super(props);
@@ -38,8 +39,21 @@ class Logon extends Component {
 
     const handleInput = this.handleInputChange;
     return (
-      <div className="xyz">
-        <h3>Sign in </h3>
+      <div
+        class="card"
+        className="form-signin"
+        style={{
+          backgroundImage:
+            "url(" +
+            "https://images.unsplash.com/photo-1586021280718-53fbadcb65a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" +
+            ")",
+          backgroundPosition: "center",
+          backgroundSize: "100em",
+          backgroundRepeat: "no-repeat",
+          height: "555px"
+        }}
+      >
+        <h3 style={{ color: "white" }}>Sign in </h3>
         {
           /*If error, Firebase sends message */ error && (
             <p>ERROR: {error.message}</p>
@@ -47,27 +61,33 @@ class Logon extends Component {
         }
 
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Email Address: </label>
+          <div class="mb-3">
+            <label class="form-label" style={{ color: "white" }}>
+              Email Address:{" "}
+            </label>
             <input
               type="email"
               name="email"
-              placeholder="enter email"
+              placeholder="Enter your email"
               value={email}
               onChange={handleInput}
             />
           </div>
-          <div>
-            <label>Password: </label>
+          <div class="mb-3">
+            <label class="form-label" style={{ color: "white" }}>
+              Password:{" "}
+            </label>
             <input
               type="password"
               name="password"
-              placeholder="Password"
+              placeholder="Enter your password"
               value={password}
               onChange={handleInput}
             />
           </div>
-          <button>Logon</button>
+          <button type="submit" class="btn btn-light">
+            Logon
+          </button>
         </form>
       </div>
     );
