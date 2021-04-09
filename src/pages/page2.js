@@ -20,7 +20,10 @@ function flexibleSelectID(id) {
 
 class Page2 extends Component {
   piechartClick() {
-    $("#piechart").style.display !== "none" ? "none" : "block";
+    $("#piechart").toggle();
+  }
+  barchartClick() {
+    $("#piechart").toggle();
   }
 
   render() {
@@ -43,7 +46,7 @@ class Page2 extends Component {
           </div>
         ))}
         <button onClick={this.piechartClick}> pie chart</button>
-        <button onClick={this.linechartClick}> line chart</button>
+        <button onClick={this.barchartClick}> bar chart</button>
         <div id="piechart" display="none">
           <ReactEcharts
             option={{
