@@ -31,8 +31,8 @@ class Page2 extends Component {
 
     return (
       <div className="App">
-        <h1>Data Object (Map Function/Filter Function Test): </h1>
-        <p>Test Paragraph </p>
+        {/* <h1>Data Object (Map Function/Filter Function Test): </h1>
+        <p>Test Paragraph </p> */}
         {data.filter(flexibleSelectID(9)).map((
           d //Map/Filter function on the test data
         ) => (
@@ -102,7 +102,7 @@ class Page2 extends Component {
                 data: ["balance", "expense", "income"]
               },
               grid: {
-                left: "3%",
+                left: "4%",
                 right: "4%",
                 bottom: "3%",
                 containLabel: true
@@ -118,7 +118,7 @@ class Page2 extends Component {
                   axisTick: {
                     show: false
                   },
-                  data: ["mon", "tues", "wed", "thur", "fri", "sat", "sun"]
+                  data: ["Jan", "feb", "Mar", "Apr", "May", "June", "July","Aug","Sep","Oct","Nov","Dec"]
                 }
               ],
               series: [
@@ -132,7 +132,7 @@ class Page2 extends Component {
                   emphasis: {
                     focus: "series"
                   },
-                  data: [200, 170, 240, 244, 200, 220, 210]
+                  data: [200, 170, 240, 244, 200, 220, 210,200, 170, 240, 244, 200]
                 },
                 {
                   name: "income",
@@ -144,7 +144,7 @@ class Page2 extends Component {
                   emphasis: {
                     focus: "series"
                   },
-                  data: [320, 302, 341, 374, 390, 450, 420]
+                  data: [320, 302, 341, 374, 390, 450, 234,320, 302, 341, 374, 390]
                 },
                 {
                   name: "expense",
@@ -157,7 +157,7 @@ class Page2 extends Component {
                   emphasis: {
                     focus: "series"
                   },
-                  data: [-120, -132, -101, -134, -190, -230, -210]
+                  data: [-120, -132, -101, -134, -190, -230, -210,-120, -132, -101, -134, -190, ]
                 }
               ]
             }}

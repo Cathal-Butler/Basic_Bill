@@ -49,7 +49,7 @@ class App extends Component {
       <div className="App">
         {this.state.authenticated && ( //Once a user has logged in, display the navbar
           <div id="nav">
-            <div id="menuText">Login/Sign-Up</div>
+            <div id="menuText">view financcial data</div>
             <img
               id="menuBtn"
               src="https://images.unsplash.com/photo-1586941962765-d3896cc85ac8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
