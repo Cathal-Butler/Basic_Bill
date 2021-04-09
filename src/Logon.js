@@ -56,7 +56,7 @@ class Logon extends Component {
         <h3 style={{ color: "white" }}>Sign in </h3>
         {
           /*If error, Firebase sends message */ error && (
-            <p>ERROR: {error.message}</p>
+            <p style={{ color: "white" }}>ERROR: {error.message}</p>
           )
         }
 

@@ -67,27 +67,28 @@ class App extends Component {
         {this.state.authenticated && ( //Display all of the pages if the user is logged in.
           <Router>
             <div id="menu">
-              <Link
+              {/* <Link
                 to="/"
                 className="link"
                 onClick={this.showMenu.bind(this, "Home")}
               >
                 Login or Sign-Up
-              </Link>
+              </Link> */}
               <Link
                 to="/option1"
-                className="link"
-                onClick={this.showMenu.bind(this, "Data Entry")}
-              >
-                Enter Income and Expense
-              </Link>
-              <Link
-                to="/option2"
                 className="link"
                 onClick={this.showMenu.bind(this, "Your Financial Data")}
               >
                 View Financial Data
               </Link>
+              <Link
+                to="/option2"
+                className="link"
+                onClick={this.showMenu.bind(this, "Data Entry")}
+              >
+                Enter Income and Expense
+              </Link>
+
               <Link
                 to="/option3"
                 className="link"
@@ -102,23 +103,23 @@ class App extends Component {
               >
                 Logout
               </Link>
-              <Link
+              {/* <Link
                 to="/option5"
                 className="link"
                 onClick={this.showMenu.bind(this, "Firebase Test")}
               >
                 Firebase Test
-              </Link>
+              </Link> */}
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
               >
-                <Route exact path="/" component={home} />
-                <Route exact path="/option1" component={page1} />
-                <Route exact path="/option2" component={page2} />
+                {/* <Route exact path="/" component={home} /> */}
+                <Route exact path="/option2" component={page1} />
+                <Route exact path="/option1" component={page2} />
                 <Route exact path="/option3" component={page3} />
                 <Route exact path="/option4" component={page4} />
-                <Route exact path="/option5" component={page5} />
+                {/* <Route exact path="/option5" component={page5} /> */}
               </Switch>
             </div>
           </Router>
