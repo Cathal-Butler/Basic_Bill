@@ -9,6 +9,7 @@ class Page4 extends Component {
     this.logOutUser = this.logOutUser.bind(this);
   } // end constructor
 
+  //Firebase will handle logout matters
   logOutUser() {
     // Make a call to firebase authentication
     // this API will log the user out now.
@@ -19,7 +20,7 @@ class Page4 extends Component {
     return (
       <div className="Logout">
         <button onClick={this.logOutUser}>Logout</button>
-      </div>
+      </div> //Simple logout button
     ); // end of return statement
   } // end of render function
 } // end of class

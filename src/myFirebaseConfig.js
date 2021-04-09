@@ -1,3 +1,6 @@
+/*This code is our SDK taken from the Firebase Console. If we want to change the firebase database, 
+We will need to get the new SDK and change it here. */
+
 import firebase from "firebase";
 
 const firebaseConfig = {

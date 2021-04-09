@@ -5,6 +5,7 @@ class Logon extends Component {
     super(props);
 
     this.state = {
+      //Handles users login state (for Firebase ) */
       email: "",
       password: "",
       error: null
@@ -13,10 +14,12 @@ class Logon extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //Taking in what the user puts into Email/Password input box
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  //Firebase handles authentication
   handleSubmit(event) {
     event.preventDefault();
     const { email, password } = this.state;
@@ -37,7 +40,11 @@ class Logon extends Component {
     return (
       <div className="xyz">
         <h3>Sign in </h3>
-        {error && <p>ERROR: {error.message}</p>}
+        {
+          /*If error, Firebase sends message */ error && (
+            <p>ERROR: {error.message}</p>
+          )
+        }
 
         <form onSubmit={this.handleSubmit}>
           <div>

@@ -1,28 +1,30 @@
 import React, { Component } from "react";
 import "./styles.css";
-import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom"; //App uses routing to navigate from page to page (See Dependencies)
 import $ from "jquery";
-import home from "./pages/home";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css"; //Styling purposes
+import home from "./pages/home"; //Importing the pages for routing
 import page1 from "./pages/page1";
 import page2 from "./pages/page2";
 import page3 from "./pages/page3";
 import page4 from "./pages/page4";
 import page5 from "./pages/page5";
-import Logon from "./Logon";
-import Firebase from "firebase";
+import Logon from "./Logon"; //Importing logon component
+import Firebase from "firebase"; //App is connect to realtime firebase
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      //So firebase can handle users who are logged in v. not logged in
       authenticated: false,
       currentUser: null
     };
   }
 
   componentDidMount() {
+    //Firebase handles this for us
     Firebase.auth().onAuthStateChanged((user) => {
       user
         ? this.setState(() => ({
@@ -45,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.authenticated && (
+        {this.state.authenticated && ( //Once a user has logged in, display the navbar
           <div id="nav">
             <div id="menuText">Login/Sign-Up</div>
             <img
@@ -57,10 +59,12 @@ class App extends Component {
           </div>
         )}
 
-        {!this.state.authenticated && <Logon />}
-        {/* {this.state.authenticated && <Logout />} */}
+        {
+          /*If user is not logged in, display the logon component */ !this.state
+            .authenticated && <Logon />
+        }
 
-        {this.state.authenticated && (
+        {this.state.authenticated && ( //Display all of the pages if the user is logged in.
           <Router>
             <div id="menu">
               <Link
@@ -107,7 +111,8 @@ class App extends Component {
               </Link>
             </div>
             <div id="main">
-              <Switch>
+              <Switch /*This block of code handles the clicking(routing) from page to page in the application */
+              >
                 <Route exact path="/" component={home} />
                 <Route exact path="/option1" component={page1} />
                 <Route exact path="/option2" component={page2} />

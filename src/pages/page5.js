@@ -6,9 +6,12 @@ import Firebase from "firebase";
 class Page5 extends Component {
   constructor(props) {
     super(props);
+    //In essence, we will create a copy of the Firebase database and store it in state dbData[]
     this.state = {
       dbData: []
     };
+
+    //Inform react of events
     this.getMessagesFromDatabase = this.getMessagesFromDatabase.bind(this);
   } // end constructor
 
@@ -17,7 +20,7 @@ class Page5 extends Component {
 
     this.getMessagesFromDatabase();
   }
-
+  //Alot of the code below is from firebase which handles the data
   getMessagesFromDatabase() {
     let ref = Firebase.database().ref("userData");
 
@@ -26,7 +29,7 @@ class Page5 extends Component {
       let msgData = snapshot.val();
       let newMessagesFromDB = [];
       for (let m in msgData) {
-        // create a JSON object version of our object.
+        // create a JSON object version of our object. If the JSON data format changes in the database, this code will need to change
         let currObject = {
           userID: msgData[m].userID,
           details: {
@@ -37,7 +40,7 @@ class Page5 extends Component {
         // add it to our newStateMessages array.
         newMessagesFromDB.push(currObject);
       } // end for loop
-      // set state = don't use concat.
+      // set state
       this.setState({ dbData: newMessagesFromDB });
     }); // end of the on method
   } // end of getMessagesFromDatabase()
@@ -49,12 +52,15 @@ class Page5 extends Component {
 
         {this.state.dbData.length <= 0 && <p>Please wait ... data loading</p>}
 
-        {this.state.dbData.length > 0 && (
+        {this.state.dbData.length > 0 && ( //Should update live if the database changes
           <p>There are {this.state.dbData.length} objects from DB</p>
         )}
 
         <ul>
-          {this.state.dbData.map((data, index) => (
+          {this.state.dbData.map((
+            data,
+            index //testing the map function on the data
+          ) => (
             <li key={index}>
               <b>{data.details.name}</b> <i>{data.details.password}</i>
             </li>

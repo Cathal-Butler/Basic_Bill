@@ -1,3 +1,5 @@
+//Test data for 'Your financial data graphical representation
+
 export const userData = [
   {
     userID: 1,
