@@ -54,7 +54,7 @@ class Page1 extends Component {
   render() {
     return (
       <div id="page1">
-        <h1>Select Income or Expense: </h1>
+        <h1>Peter, would you like to enter your Expense or Income? </h1>
         <button
           class="btn btn-secondary btn-lg btn-block"
           onClick={this.toggleExpenseHandler}

@@ -8,7 +8,10 @@ const income = (props) => {
 
   function submitAlert() {
     alert(
-      "Hooray, you have submitted an income of €" + income + " on the " + datei
+      "Nice work Peter, you have submitted an income of €" +
+        income +
+        " on the " +
+        datei
     );
   }
   return (

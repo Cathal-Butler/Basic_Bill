@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Firebase from "firebase";
+import "./logon.css";
 
 class Logon extends Component {
   constructor(props) {
@@ -39,30 +40,17 @@ class Logon extends Component {
 
     const handleInput = this.handleInputChange;
     return (
-      <div
-        class="card"
-        className="form-signin"
-        style={{
-          backgroundImage:
-            "url(" +
-            "https://images.unsplash.com/photo-1586021280718-53fbadcb65a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" +
-            ")",
-          backgroundPosition: "center",
-          backgroundSize: "100em",
-          backgroundRepeat: "no-repeat",
-          height: "555px"
-        }}
-      >
-        <h3 style={{ color: "white" }}>Sign in </h3>
+      <div className="form-signin" id="logon-bgimage">
+        <h1 class="h1">Basic Bill Sign in </h1>
         {
           /*If error, Firebase sends message */ error && (
-            <p style={{ color: "white" }}>ERROR: {error.message}</p>
+            <p class="p">ERROR: {error.message}</p>
           )
         }
 
         <form onSubmit={this.handleSubmit}>
           <div class="mb-3">
-            <label class="form-label" style={{ color: "white" }}>
+            <label class="form-label" class="p">
               Email Address:{" "}
             </label>
             <input
@@ -74,7 +62,7 @@ class Logon extends Component {
             />
           </div>
           <div class="mb-3">
-            <label class="form-label" style={{ color: "white" }}>
+            <label class="form-label" class="p">
               Password:{" "}
             </label>
             <input

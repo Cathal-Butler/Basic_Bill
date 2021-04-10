@@ -9,7 +9,10 @@ const expense = (props) => {
 
   function submitAlert() {
     alert(
-      "Hooray, you have submitted an expense of €" + expense + " on the " + date
+      "Good work Peter, you have submitted an expense of €" +
+        expense +
+        " on the " +
+        date
     );
   }
 

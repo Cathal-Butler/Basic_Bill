@@ -84,9 +84,9 @@ class App extends Component {
               <Link
                 to="/option2"
                 className="link"
-                onClick={this.showMenu.bind(this, "Data Entry")}
+                onClick={this.showMenu.bind(this, "Add your Expense & Income")}
               >
-                Enter Income and Expense
+                Enter Expense and Income
               </Link>
 
               <Link
