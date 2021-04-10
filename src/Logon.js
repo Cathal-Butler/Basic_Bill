@@ -41,13 +41,14 @@ class Logon extends Component {
     const handleInput = this.handleInputChange;
     return (
       <div className="form-signin" id="logon-bgimage">
-        <h1 class="h1">Basic Bill Sign in </h1>
+        <h1 class="h1">Welcome to Basic Bill! </h1> <br />
+        <h1 class="h1">Please sign in to start saving money! </h1>
+        <br />
         {
           /*If error, Firebase sends message */ error && (
             <p class="p">ERROR: {error.message}</p>
           )
         }
-
         <form onSubmit={this.handleSubmit}>
           <div class="mb-3">
             <label class="form-label" class="p">

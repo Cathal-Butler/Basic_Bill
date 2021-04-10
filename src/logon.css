@@ -1,12 +1,13 @@
 #logon-bgimage {
   background: url("https://images.unsplash.com/photo-1580048915913-4f8f5cb481c4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-  height: 75em;
+  height: 80em;
   background-position: center;
   background-repeat: no repeat;
   background-size: cover;
 }
 .h1 {
   color: white;
+  font-family: "Lucida Console";
 }
 
 .p {
