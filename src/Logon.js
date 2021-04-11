@@ -51,7 +51,12 @@ class Logon extends Component {
     const handleInput = this.handleInputChange;
     return (
       <div className="form-signin" id="logon-bgimage">
-        <h1 class="h1">Welcome to Basic Bill! </h1> <br />
+        <h1 class="h1">
+          {" "}
+          <br />
+          <br />
+          <b>Welcome to Basic Bill </b>{" "}
+        </h1>
         <h1 class="h1">Please sign in to start saving money! </h1>
         <br />
         {
@@ -60,10 +65,9 @@ class Logon extends Component {
           )
         }
         <form onSubmit={this.handleSubmit}>
-          <div class="mb-3">
-            <label class="form-label" class="p">
-              Email Address:{" "}
-            </label>
+          <div class="mb-3, form">
+            <label class="form-label, p">Email Address: </label>
+            &nbsp; &nbsp;
             <input
               type="email"
               name="email"
@@ -71,11 +75,11 @@ class Logon extends Component {
               value={email}
               onChange={handleInput}
             />
+            &nbsp; &nbsp; &nbsp;
           </div>
-          <div class="mb-3">
-            <label class="form-label" class="p">
-              Password:{" "}
-            </label>
+          <div class="mb-3, form">
+            <label class="form-label, p">Password: </label>
+            &nbsp; &nbsp;
             <input
               type="password"
               name="password"
@@ -84,12 +88,15 @@ class Logon extends Component {
               onChange={handleInput}
             />
           </div>
+          &nbsp; &nbsp;
           <button type="submit" class="btn btn-light">
             Logon
           </button>{" "}
           <br />
-          <button onClick={this.toggleSignUpHandler} class="btn btn-secondary">
-            Sign Up{" "}
+          <br />
+          <br />
+          <button onClick={this.toggleSignUpHandler} class="btn btn-light">
+            New to Basic Bill? Click here to Sign Up!{" "}
           </button>
         </form>
         {this.state.showSignUp === true ? (

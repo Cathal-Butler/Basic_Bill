@@ -41,7 +41,9 @@ class Signup extends Component {
     const handleInput = this.handleInputChange;
     return (
       <div className="form-signup">
-        <h1>Sign Up Here! </h1> <br />
+        <br />
+        <br />
+
         {
           /*If error, Firebase sends message */ error && (
             <p class="p">ERROR: {error.message}</p>
@@ -50,7 +52,7 @@ class Signup extends Component {
         <form onSubmit={this.handleSubmit}>
           <div class="mb-3">
             <label class="form-label" class="p">
-              Email Address:{" "}
+              Email Address: &nbsp;
             </label>
             <input
               type="email"
@@ -62,7 +64,7 @@ class Signup extends Component {
           </div>
           <div class="mb-3">
             <label class="form-label" class="p">
-              Password:{" "}
+              Password: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             </label>
             <input
               type="password"
