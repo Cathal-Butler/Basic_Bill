@@ -30,7 +30,8 @@ class Page3 extends Component {
 
     let list = this.state.lists;
     let info = parseInt($("#addValue").val(), 10);
-    let date = parseInt($("#addDate").val(), 10);
+    let date = $("#addDate").val();
+    //console.log($("#addDate").val());
     let newExpense = output + info;
     list.push({ id: ++i, value: info, date: date }); //是++I
     this.setState({ lists: list });
@@ -72,7 +73,7 @@ class Page3 extends Component {
       .off("click")
       .click(function () {
         let info = parseInt($("#editValue").val(), 10);
-        let date = parseInt($("#editDate").val(), 10);
+        let date = $("#editDate").val();
         $("#" + index)
           .children()
           .eq(0)
@@ -129,7 +130,7 @@ class Page3 extends Component {
     return (
       <div>
         <input type="text" id="addValue" placeholder="Enter Bill's amount" />
-        <input type="text" id="addDate" placeholder="Enter bill's due date" />
+        <input type="month" id="addDate" placeholder="Enter bill's due date" />
         <button onClick={this.add}>add new invoice</button>
 
         <div>
@@ -187,7 +188,7 @@ class Page3 extends Component {
         <div id="editBox">
           <p id="message" />
           <input type="text" id="editValue" />
-          <input type="text" id="editDate" />
+          <input type="month" id="editDate" />
           <img
             id="submitBtn"
             className="editBoxBtn"
