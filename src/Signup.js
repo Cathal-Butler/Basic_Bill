@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import Firebase from "firebase";
 import "./logon.css";
-import Signup from "./Signup";
 
-class Logon extends Component {
-  state = {
-    showSignUp: false //For showing and hiding the sign up component
-  };
-
+class Signup extends Component {
   constructor(props) {
     super(props);
 
@@ -31,7 +26,7 @@ class Logon extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     Firebase.auth()
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
       .then((user) => {
         console.log("User logged on");
       })
@@ -40,20 +35,13 @@ class Logon extends Component {
       });
   }
 
-  toggleSignUpHandler = () => {
-    const doesShowSignUp = this.state.showSignUp;
-    this.setState({ showSignUp: !doesShowSignUp });
-  };
-
   render() {
     const { email, password, error } = this.state;
 
     const handleInput = this.handleInputChange;
     return (
-      <div className="form-signin" id="logon-bgimage">
-        <h1 class="h1">Welcome to Basic Bill! </h1> <br />
-        <h1 class="h1">Please sign in to start saving money! </h1>
-        <br />
+      <div className="form-signup">
+        <h1>Sign Up Here! </h1> <br />
         {
           /*If error, Firebase sends message */ error && (
             <p class="p">ERROR: {error.message}</p>
@@ -85,22 +73,12 @@ class Logon extends Component {
             />
           </div>
           <button type="submit" class="btn btn-light">
-            Logon
-          </button>{" "}
-          <br />
-          <button onClick={this.toggleSignUpHandler} class="btn btn-secondary">
-            Sign Up{" "}
+            Sign Up
           </button>
         </form>
-        {this.state.showSignUp === true ? (
-          //Wrap Signup component in a div so it can be hidden or shown using hte ernary operator, if true, show it, else: :null (hide it)
-          <div>
-            <Signup />
-          </div>
-        ) : null}
       </div>
     );
   }
 } //end of class
 
-export default Logon;
+export default Signup;
