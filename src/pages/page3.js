@@ -15,13 +15,28 @@ function flexibleSelectID(id) {
   };
 }
 function total( arr){
+  // console.log(arr +"show data");
   var s = 0;
     arr.forEach(function(val, idx, arr) {
         s += val;
     }, 0);
-  
+    // console.log("total income is "+s);
     return s;
+  // return 0; 
+ 
 }
+function getBalance(arr1,arr2){
+  var s1 = 0;
+    arr1.forEach(function(val, idx, arr) {
+        s1 += val;
+    }, 0);
+    var s2 = 0;
+    arr2.forEach(function(val, idx, arr) {
+        s2 += val;
+    }, 0);
+    return s1-s2;
+}
+
 class Page3 extends Component {
   constructor(props) {
     super(props);
@@ -30,9 +45,9 @@ class Page3 extends Component {
     this.edit = this.edit.bind(this);
     this.state = {
       lists: [],
-      income: 1000,
-      expense: 0,
-      balance: 1000,
+      income: total(data[8].income),
+      expense:total(data[8].expenses),
+      balance:getBalance(data[8].income,data[8].expenses),
       ignore: false,
       
     };
@@ -101,11 +116,21 @@ class Page3 extends Component {
         $("#editBox").hide();
       });
   }
-
+// originalWaringing(number){
+  
+//   if (number< 0) {
+//     $("#messageBox").show();
+//   }
+//   return number;
+// }
   //计算expense和balance判断要不要跳出warning
   checking(info, oldInvoice) {
     let input = parseInt(this.state.income, 10);
     let output = parseInt(this.state.expense, 10);
+    var balance=input-output;
+    if (balance < 0) {
+      $("#messageBox").show();
+    }
     //let balance = this.state.balance;
     let newExpense = info + output - oldInvoice;
     let newBalance = input - newExpense;
@@ -153,8 +178,6 @@ class Page3 extends Component {
            <li>
               <b>UserID: </b> {" " + d.userID + " "}
               <b> Name: </b> {" " + d.name + " "}
-              <b> Expense: </b> {" " + d.expenses + " "}
-              <b> Income: </b> {" " + d.income + " "}{" "}
           </li>
       </div>
 ))}
