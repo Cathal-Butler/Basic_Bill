@@ -10,6 +10,7 @@ import page3 from "./pages/page3";
 import page4 from "./pages/page4";
 import page5 from "./pages/page5";
 import Logon from "./Logon"; //Importing logon component
+import Signup from "./Signup"; //IMporting signup component
 import Firebase from "firebase"; //App is connect to realtime firebase
 
 class App extends Component {
@@ -63,6 +64,8 @@ class App extends Component {
           /*If user is not logged in, display the logon component */ !this.state
             .authenticated && <Logon />
         }
+
+        {/* {!this.state.authenticated && <Signup />} */}
 
         {this.state.authenticated && ( //Display all of the pages if the user is logged in.
           <Router>
