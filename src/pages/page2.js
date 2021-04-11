@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { userData } from "./data.js";
+import {userData} from "./data.js";
 import ReactEcharts from "echarts-for-react";
 import $ from "jquery";
 //导入折线图

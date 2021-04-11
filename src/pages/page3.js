@@ -1,13 +1,27 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./page3.css";
+import {userData} from "./data.js";
 import $ from "jquery";
 //import {Table} from "bootstrap";
 import yesBtn from "./img/yesBtn.png";
 //import noBtn from "./img/noBtn.png";
 
 let i = 0; //I
-
+const data = userData;
+function flexibleSelectID(id) {
+  return function (userObject) {
+    return userObject.userID === id;
+  };
+}
+function total( arr){
+  var s = 0;
+    arr.forEach(function(val, idx, arr) {
+        s += val;
+    }, 0);
+  
+    return s;
+}
 class Page3 extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +33,8 @@ class Page3 extends Component {
       income: 1000,
       expense: 0,
       balance: 1000,
-      ignore: false
+      ignore: false,
+      
     };
   }
 
@@ -128,7 +143,22 @@ class Page3 extends Component {
 
   render() {
     return (
+
       <div>
+        <div>
+          {data.filter(flexibleSelectID(9)).map((
+              d //Map/Filter function on the test data
+              ) => (
+              <div key={d.userID}>
+           <li>
+              <b>UserID: </b> {" " + d.userID + " "}
+              <b> Name: </b> {" " + d.name + " "}
+              <b> Expense: </b> {" " + d.expenses + " "}
+              <b> Income: </b> {" " + d.income + " "}{" "}
+          </li>
+      </div>
+))}
+        </div>
         <input type="text" id="addValue" placeholder="Enter Bill's amount" />
         <input type="month" id="addDate" placeholder="Enter bill's due date" />
         <button onClick={this.add}>add new invoice</button>
