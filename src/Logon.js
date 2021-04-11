@@ -105,6 +105,12 @@ class Logon extends Component {
             <Signup />
           </div>
         ) : null}
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png" />
       </div>
     );
   }
