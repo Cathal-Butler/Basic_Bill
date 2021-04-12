@@ -192,7 +192,7 @@ class Page3 extends Component {
           <span id="currentBalance">Balance:{this.state.balance}</span>
         </div>
 
-        <table id="invoiceList">
+        <table id="invoiceList" class="table table-dark">
           <thead id="invoiceListhead">
             <tr>
               <th>Invoice</th>

@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import {userData} from "./data.js";
 import ReactEcharts from "echarts-for-react";
 import $ from "jquery";
-
 //导入折线图
 import "echarts/lib/chart/line";
 // 引入提示框和标题组件
@@ -19,17 +18,17 @@ function flexibleSelectID(id) {
   };
 }
 function total( arr){
-  // console.log(arr +"show data");
-  var s = 0;
-    arr.forEach(function(val, idx, arr) {
-        s += val;
-    }, 0);
-    // console.log("total income is "+s);
-    return s;
-  // return 0; 
- 
-}
-var input=total(data[8].income);
+    // console.log(arr +"show data");
+    var s = 0;
+      arr.forEach(function(val, idx, arr) {
+          s += val;
+      }, 0);
+      // console.log("total income is "+s);
+      return s;
+    // return 0; 
+   
+  }
+  var input=total(data[8].income);
 var output=total(data[8].expenses);
 class Page2 extends Component {
   piechartClick() {
@@ -38,10 +37,10 @@ class Page2 extends Component {
   barchartClick() {
     $("#piechart").toggle();
   }
-
-
+  
   render() {
-   
+    console.log(data);
+
     return (
       <div className="App">
         {/* <h1>Data Object (Map Function/Filter Function Test): </h1>
@@ -60,7 +59,6 @@ class Page2 extends Component {
         ))}
         <button onClick={this.piechartClick}> pie chart</button>
         <button onClick={this.barchartClick}> bar chart</button>
-
         <div id="piechart" display="none">
           <ReactEcharts
             option={{
@@ -75,7 +73,7 @@ class Page2 extends Component {
               },
               series: [
                 {
-                  name: "Finance",
+                  name: "Utilization",
                   type: "pie",
                   radius: ["50%", "70%"],
                   avoidLabelOverlap: false,
@@ -94,8 +92,8 @@ class Page2 extends Component {
                     show: false
                   },
                   data: [
-                    { value:input, name: "income" },
-                    { value:output, name: "expense" }
+                    { value: input, name: "income" },
+                    { value: output, name: "expense" }
                   ]
                 }
               ]
