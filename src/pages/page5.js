@@ -48,11 +48,12 @@ class Page5 extends Component {
     }); // end of the on method
   } // end of getMessagesFromDatabase()
 
+  //CREATE ACTIVITY
   generateRandomObject() {
     let uuid = require("uuid"); //generate unique message ID
-    let userID = uuid.v4();
-    let emailLabel = "new@email.com";
-    let passwordLabel = "newpassword";
+    let userID = uuid.v4(); //auto generated userID from Firebase
+    let emailLabel = "petermooney@mu.ie";
+    let passwordLabel = "iamahero";
     let expensesLabel = [66, 44, 33];
     let incomeLabel = [27, 1503, 339];
     //create new message object which will be inserted into the DB.
@@ -78,6 +79,39 @@ class Page5 extends Component {
     this.setState({ dbData: localMessages });
   }
 
+  //DELETE ACTIVITY
+
+  //Filter callback function, want to filter out object required for deltion.
+  //Want to match objects which don't match the userObjectID. The filter will return the
+  //array of objects WITHOUT the object with the userObjectID
+  filterByUserID(userObjectID) {
+    return function (userObject) {
+      return userObject.userID !== userObjectID;
+    };
+  } //end of filterByUserID
+
+  //delete the user object form the user selection
+  deleteObject(userObjectIDToDelete) {
+    //get current state in array dbData holding our data
+    const localUserObjects = this.state.dbData;
+
+    //filter function needs to be applied to remove object we wish to delete
+    //This is our dbData array WITHOUT the object for deletion.
+
+    const updatedlocalUserObjects = localUserObjects.filter(
+      this.filterByUserID(userObjectIDToDelete)
+    );
+
+    //set state in the application. Now the local state is updated
+    this.setState({ dbData: updatedlocalUserObjects });
+
+    //updated FB DB using set from Firebase API
+    //replace data at userData with the new dbData array (in state)
+    //or using the local variable
+
+    Firebase.database().ref("/userData").set(updatedlocalUserObjects);
+  }
+
   render() {
     return (
       <div className="Logout">
@@ -95,17 +129,28 @@ class Page5 extends Component {
             index //testing the map function on the data
           ) => (
             <li key={index}>
-              <b> UserID: {data.details.userID} </b>{" "}
-              <b> Email: {data.details.email}</b>{" "}
+              <b> UserID: {data.userID} </b> <b> Email: {data.details.email}</b>{" "}
               <b> Password: {data.details.password} </b>
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
             </li>
           ))}
         </ul>
-        <button onClick={this.generateRandomObject}>
-          Generate Random Object
-        </button>
+        <button onClick={this.generateRandomObject}>Generate Object</button>
+
+        <ul>
+          {this.state.dbData.map((data, index) => (
+            <li key={index}>
+              <b> UserID: {data.userID} </b> <b> Email: {data.details.email}</b>{" "}
+              <b> Password: {data.details.password} </b>
+              <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Income: {"€" + data.details.income + ","} </b>
+              <button onClick={() => this.deleteObject(data.userID)}>
+                Delete Object
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     ); // end of return statement
   } // end of render function
