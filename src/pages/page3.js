@@ -7,7 +7,7 @@ import $ from "jquery";
 import yesBtn from "./img/yesBtn.png";
 //import noBtn from "./img/noBtn.png";
 
-let i = 0; //I
+let i = 0; 
 const data = userData;
 function flexibleSelectID(id) {
   return function (userObject) {
