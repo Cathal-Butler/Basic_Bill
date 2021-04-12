@@ -13,6 +13,7 @@ class Page5 extends Component {
 
     //Inform react of events
     this.getMessagesFromDatabase = this.getMessagesFromDatabase.bind(this);
+    this.generateRandomObject = this.generateRandomObject.bind(this);
   } // end constructor
 
   componentDidMount() {
@@ -47,6 +48,36 @@ class Page5 extends Component {
     }); // end of the on method
   } // end of getMessagesFromDatabase()
 
+  generateRandomObject() {
+    let uuid = require("uuid"); //generate unique message ID
+    let userID = uuid.v4();
+    let emailLabel = "new@email.com";
+    let passwordLabel = "newpassword";
+    let expensesLabel = [66, 44, 33];
+    let incomeLabel = [27, 1503, 339];
+    //create new message object which will be inserted into the DB.
+    let newMsgObj = {
+      userID: userID,
+      details: {
+        email: emailLabel,
+        password: passwordLabel,
+        expenses: expensesLabel,
+        income: incomeLabel
+      }
+    };
+
+    //access the messages held in state held above
+    let localMessages = this.state.dbData;
+    //add our new object, can use push here.
+    localMessages.push(newMsgObj);
+    //For basic write ops, can use set() to save data to specified ref, replacing any existing data at that path.
+    //Using set() overwrites data at that specified location incl. any child data
+    Firebase.database().ref("/userData").set(localMessages);
+    //restore state of this component back to the default
+    //The entire array of JSON objects(incl. the new object) are pushed and state is set again
+    this.setState({ dbData: localMessages });
+  }
+
   render() {
     return (
       <div className="Logout">
@@ -72,6 +103,9 @@ class Page5 extends Component {
             </li>
           ))}
         </ul>
+        <button onClick={this.generateRandomObject}>
+          Generate Random Object
+        </button>
       </div>
     ); // end of return statement
   } // end of render function

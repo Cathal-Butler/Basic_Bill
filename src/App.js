@@ -106,13 +106,13 @@ class App extends Component {
               >
                 Logout
               </Link>
-              {/* <Link
+              <Link
                 to="/option5"
                 className="link"
                 onClick={this.showMenu.bind(this, "Firebase Test")}
               >
                 Firebase Test
-              </Link> */}
+              </Link>
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
@@ -123,7 +123,7 @@ class App extends Component {
                 <Route exact path="/option1" component={page2} />
                 <Route exact path="/option3" component={page3} />
                 <Route exact path="/option4" component={page4} />
-                {/* <Route exact path="/option5" component={page5} /> */}
+                <Route exact path="/option5" component={page5} />
               </Switch>
             </div>
           </Router>
