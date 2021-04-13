@@ -37,7 +37,11 @@ class Page5 extends Component {
           objectID: msgData[m].objectID,
           details: {
             expenses: msgData[m].details.expenses,
-            income: msgData[m].details.income
+            expensesDate: msgData[m].details.expensesDate,
+            income: msgData[m].details.income,
+            incomeDate: msgData[m].details.incomeDate,
+            invoiceAmount: msgData[m].details.invoiceAmount,
+            invoiceDue: msgData[m].details.invoiceDue
           }
         };
         // add it to our newStateMessages array.
@@ -53,13 +57,21 @@ class Page5 extends Component {
     let uuid = require("uuid"); //generate unique message ID
     let objectID = uuid.v4(); //auto generated objectID from Firebase
     let expensesLabel = [66, 44, 33];
+    let expensesDateLabel = ["01/02/2021", "02/03/2021", "03/04/2021"];
     let incomeLabel = [27, 1503, 339];
+    let incomeDateLabel = ["04/05/2021", "05/06/2021", "06/07/2021"];
+    let invoiceAmountLabel = [120, 200];
+    let invoiceDueLabel = ["08/07/2021", "07/06/2021"];
     //create new message object which will be inserted into the DB.
     let newMsgObj = {
       objectID: objectID,
       details: {
         expenses: expensesLabel,
-        income: incomeLabel
+        expensesDate: expensesDateLabel,
+        income: incomeLabel,
+        incomeDate: incomeDateLabel,
+        invoiceAmount: invoiceAmountLabel,
+        invoiceDue: invoiceDueLabel
       }
     };
 
@@ -133,7 +145,14 @@ class Page5 extends Component {
             <li key={index}>
               <b> ObjectID: {data.objectID} </b>
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Expense Date: {data.details.expensesDate + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
+              <b> Income Date: {data.details.incomeDate + ","} </b>
+              <b>
+                {" "}
+                Invoice Amount: {"€" + data.details.invoiceAmount + ","}{" "}
+              </b>{" "}
+              <b> Invoice Due: {data.details.invoiceDue + ","} </b>
             </li>
           ))}
         </ul>
@@ -144,13 +163,19 @@ class Page5 extends Component {
             <li key={index}>
               <b> Object ID: {data.objectID} </b>{" "}
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Expense Date: {data.details.expensesDate + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
+              <b> Income Date: {data.details.incomeDate + ","} </b>
+              <b> Invoice Amount: {data.details.invoiceAmount + ""} </b>{" "}
+              <b> Invoice Due: {data.details.invoiceDue + ","} </b>
               <button onClick={() => this.deleteObject(data.objectID)}>
                 Delete Object
               </button>
             </li>
           ))}
         </ul>
+
+        <button onClick={this.addExpense}>Add new Expense </button>
       </div>
     ); // end of return statement
   } // end of render function
