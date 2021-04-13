@@ -23,7 +23,9 @@ class Page5 extends Component {
   }
   //Alot of the code below is from firebase which handles the data
   getMessagesFromDatabase() {
-    let ref = Firebase.database().ref("userData");
+    let user = Firebase.auth().currentUser; //For users to access their own specific data
+    let uid = user.uid; //Grabs the automatically generated firebase authenticated user ID
+    let ref = Firebase.database().ref("userData").child(uid); //CHANGE**.child(uid) is added so users access their own data only
 
     ref.on("value", (snapshot) => {
       // json array
@@ -67,13 +69,15 @@ class Page5 extends Component {
       }
     };
 
+    let user = Firebase.auth().currentUser; //CHANGE*** Added to access user's data only
+    let uid = user.uid; //CHANGE*** Access users firebase ID
     //access the messages held in state held above
     let localMessages = this.state.dbData;
     //add our new object, can use push here.
     localMessages.push(newMsgObj);
     //For basic write ops, can use set() to save data to specified ref, replacing any existing data at that path.
     //Using set() overwrites data at that specified location incl. any child data
-    Firebase.database().ref("/userData").set(localMessages);
+    Firebase.database().ref("/userData").child(uid).set(localMessages); //CHANGE**** Added to access user's data only
     //restore state of this component back to the default
     //The entire array of JSON objects(incl. the new object) are pushed and state is set again
     this.setState({ dbData: localMessages });
@@ -108,8 +112,12 @@ class Page5 extends Component {
     //updated FB DB using set from Firebase API
     //replace data at userData with the new dbData array (in state)
     //or using the local variable
-
-    Firebase.database().ref("/userData").set(updatedlocalUserObjects);
+    let user = Firebase.auth().currentUser; //CHANGE*** Added to get current users data
+    let uid = user.uid; //CHANGE*** Added to get current users ID
+    Firebase.database()
+      .ref("/userData")
+      .child(uid)
+      .set(updatedlocalUserObjects); //CHANGE*** .child() added to access the users data only
   }
 
   render() {
