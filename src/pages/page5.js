@@ -34,10 +34,8 @@ class Page5 extends Component {
       for (let m in msgData) {
         // create a JSON object version of our object. If the JSON data format changes in the database, this code will need to change
         let currObject = {
-          userID: msgData[m].userID,
+          objectID: msgData[m].objectID,
           details: {
-            email: msgData[m].details.email,
-            password: msgData[m].details.password,
             expenses: msgData[m].details.expenses,
             income: msgData[m].details.income
           }
@@ -53,17 +51,13 @@ class Page5 extends Component {
   //CREATE ACTIVITY
   generateRandomObject() {
     let uuid = require("uuid"); //generate unique message ID
-    let userID = uuid.v4(); //auto generated userID from Firebase
-    let emailLabel = "petermooney@mu.ie";
-    let passwordLabel = "iamahero";
+    let objectID = uuid.v4(); //auto generated objectID from Firebase
     let expensesLabel = [66, 44, 33];
     let incomeLabel = [27, 1503, 339];
     //create new message object which will be inserted into the DB.
     let newMsgObj = {
-      userID: userID,
+      objectID: objectID,
       details: {
-        email: emailLabel,
-        password: passwordLabel,
         expenses: expensesLabel,
         income: incomeLabel
       }
@@ -88,9 +82,9 @@ class Page5 extends Component {
   //Filter callback function, want to filter out object required for deltion.
   //Want to match objects which don't match the userObjectID. The filter will return the
   //array of objects WITHOUT the object with the userObjectID
-  filterByUserID(userObjectID) {
+  filterByObjectID(userObjectID) {
     return function (userObject) {
-      return userObject.userID !== userObjectID;
+      return userObject.objectID !== userObjectID;
     };
   } //end of filterByUserID
 
@@ -103,7 +97,7 @@ class Page5 extends Component {
     //This is our dbData array WITHOUT the object for deletion.
 
     const updatedlocalUserObjects = localUserObjects.filter(
-      this.filterByUserID(userObjectIDToDelete)
+      this.filterByObjectID(userObjectIDToDelete)
     );
 
     //set state in the application. Now the local state is updated
@@ -137,8 +131,7 @@ class Page5 extends Component {
             index //testing the map function on the data
           ) => (
             <li key={index}>
-              <b> UserID: {data.userID} </b> <b> Email: {data.details.email}</b>{" "}
-              <b> Password: {data.details.password} </b>
+              <b> ObjectID: {data.objectID} </b>
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
             </li>
@@ -149,11 +142,10 @@ class Page5 extends Component {
         <ul>
           {this.state.dbData.map((data, index) => (
             <li key={index}>
-              <b> UserID: {data.userID} </b> <b> Email: {data.details.email}</b>{" "}
-              <b> Password: {data.details.password} </b>
+              <b> Object ID: {data.objectID} </b>{" "}
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
-              <button onClick={() => this.deleteObject(data.userID)}>
+              <button onClick={() => this.deleteObject(data.objectID)}>
                 Delete Object
               </button>
             </li>
