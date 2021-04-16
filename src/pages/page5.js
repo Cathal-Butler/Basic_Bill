@@ -14,6 +14,7 @@ class Page5 extends Component {
     //Inform react of events
     this.getMessagesFromDatabase = this.getMessagesFromDatabase.bind(this);
     this.generateRandomObject = this.generateRandomObject.bind(this);
+    this.addExpense = this.addExpense.bind(this);
   } // end constructor
 
   componentDidMount() {
@@ -32,12 +33,16 @@ class Page5 extends Component {
       let msgData = snapshot.val();
       let newMessagesFromDB = [];
       for (let m in msgData) {
-        // create a JSON object version of our object. If the JSON data format changes in the database, this code will need to change
+        // create a JSON object version of our object which is blank for now. If the JSON data format changes in the database, this code will need to change
         let currObject = {
           objectID: msgData[m].objectID,
           details: {
             expenses: msgData[m].details.expenses,
-            income: msgData[m].details.income
+            expensesDate: msgData[m].details.expensesDate,
+            income: msgData[m].details.income,
+            incomeDate: msgData[m].details.incomeDate,
+            invoiceAmount: msgData[m].details.invoiceAmount,
+            invoiceDue: msgData[m].details.invoiceDue
           }
         };
         // add it to our newStateMessages array.
@@ -52,14 +57,22 @@ class Page5 extends Component {
   generateRandomObject() {
     let uuid = require("uuid"); //generate unique message ID
     let objectID = uuid.v4(); //auto generated objectID from Firebase
-    let expensesLabel = [66, 44, 33];
-    let incomeLabel = [27, 1503, 339];
+    let expensesLabel = [""];
+    let expensesDateLabel = [""];
+    let incomeLabel = [""];
+    let incomeDateLabel = [""];
+    let invoiceAmountLabel = [""];
+    let invoiceDueLabel = [""];
     //create new message object which will be inserted into the DB.
     let newMsgObj = {
       objectID: objectID,
       details: {
         expenses: expensesLabel,
-        income: incomeLabel
+        expensesDate: expensesDateLabel,
+        income: incomeLabel,
+        incomeDate: incomeDateLabel,
+        invoiceAmount: invoiceAmountLabel,
+        invoiceDue: invoiceDueLabel
       }
     };
 
@@ -77,6 +90,20 @@ class Page5 extends Component {
     this.setState({ dbData: localMessages });
   }
 
+  addExpense() {
+    let newExpense = 5000;
+
+    let user = Firebase.auth().currentUser;
+    let uid = user.uid;
+
+    let localMessages = this.state.dbData;
+
+    console.log(localMessages);
+    localMessages[0].details.expenses.push(newExpense);
+    Firebase.database().ref("/userData").child(uid).set(localMessages);
+
+    this.setState({ dbData: localMessages });
+  }
   //DELETE ACTIVITY
 
   //Filter callback function, want to filter out object required for deltion.
@@ -133,7 +160,14 @@ class Page5 extends Component {
             <li key={index}>
               <b> ObjectID: {data.objectID} </b>
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Expense Date: {data.details.expensesDate + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
+              <b> Income Date: {data.details.incomeDate + ","} </b>
+              <b>
+                {" "}
+                Invoice Amount: {"€" + data.details.invoiceAmount + ","}{" "}
+              </b>{" "}
+              <b> Invoice Due: {data.details.invoiceDue + ","} </b>
             </li>
           ))}
         </ul>
@@ -144,13 +178,19 @@ class Page5 extends Component {
             <li key={index}>
               <b> Object ID: {data.objectID} </b>{" "}
               <b> Expenses: {"€" + data.details.expenses + ","} </b>{" "}
+              <b> Expense Date: {data.details.expensesDate + ","} </b>{" "}
               <b> Income: {"€" + data.details.income + ","} </b>
+              <b> Income Date: {data.details.incomeDate + ","} </b>
+              <b> Invoice Amount: {data.details.invoiceAmount + ""} </b>{" "}
+              <b> Invoice Due: {data.details.invoiceDue + ","} </b>
               <button onClick={() => this.deleteObject(data.objectID)}>
                 Delete Object
               </button>
             </li>
           ))}
         </ul>
+
+        <button onClick={this.addExpense}>Add new Expense </button>
       </div>
     ); // end of return statement
   } // end of render function
