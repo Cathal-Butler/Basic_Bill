@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Expense from "./ExpenseComponent/ExpenseComponent";
 import Income from "./IncomeComponent/IncomeComponent";
+import myFirebase from "/src/myFirebaseConfig";
+import Firebase from "firebase";
+import { timers } from "jquery";
 
 class Page1 extends Component {
   state = {
@@ -11,14 +14,96 @@ class Page1 extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { expense: "", income: "", date: "", datei: "" }; //track states of inputs
+    this.state = { expense: "", income: "", date: "", datei: "", dbData: [] }; //track states of inputs
 
     //inform React of event functions
     this.onExpenseFormChange = this.onExpenseFormChange.bind(this);
     this.onInputFormChange = this.onInputFormChange.bind(this);
     this.onExpenseDateChange = this.onExpenseDateChange.bind(this);
     this.onIncomeDateChange = this.onIncomeDateChange.bind(this);
+    this.getMessagesFromDatabase = this.getMessagesFromDatabase.bind(this);
+    this.addExpense = this.addExpense.bind(this);
+    this.addExpenseDate = this.addExpenseDate.bind(this);
+    this.addIncome = this.addIncome.bind(this);
+    this.addIncomeDate = this.addIncomeDate.bind(this);
   } //end constructor
+
+  componentDidMount() {
+    // as soon as the component mounts, get the most recent messages from the firebase database.
+
+    this.getMessagesFromDatabase();
+  }
+  //Alot of the code below is from firebase which handles the data
+  getMessagesFromDatabase() {
+    let user = Firebase.auth().currentUser; //For users to access their own specific data
+    let uid = user.uid; //Grabs the automatically generated firebase authenticated user ID
+    let ref = Firebase.database().ref("userData").child(uid); //CHANGE**.child(uid) is added so users access their own data only
+
+    ref.on("value", (snapshot) => {
+      // json array
+      let msgData = snapshot.val();
+      let newMessagesFromDB = [];
+      for (let m in msgData) {
+        // create a JSON object version of our object. If the JSON data format changes in the database, this code will need to change
+        let currObject = {
+          objectID: msgData[m].objectID,
+          details: {
+            expenses: msgData[m].details.expenses,
+            expensesDate: msgData[m].details.expensesDate,
+            income: msgData[m].details.income,
+            incomeDate: msgData[m].details.incomeDate,
+            invoiceAmount: msgData[m].details.invoiceAmount,
+            invoiceDue: msgData[m].details.invoiceDue
+          }
+        };
+        // add it to our newStateMessages array.
+        newMessagesFromDB.push(currObject);
+      } // end for loop
+      // set state
+      this.setState({ dbData: newMessagesFromDB });
+    }); // end of the on method
+  } // end of getMessagesFromDatabase()
+
+  addExpense() {
+    console.log("expense added");
+    let user = Firebase.auth().currentUser;
+    let uid = user.uid;
+    let localMessages = this.state.dbData;
+    localMessages[0].details.expenses.push(this.state.expense);
+    Firebase.database().ref("/userData").child(uid).set(localMessages);
+    this.setState({ dbData: localMessages });
+  }
+  //DELETE ACTIVITY
+
+  addExpenseDate() {
+    console.log("expense date added");
+    let user = Firebase.auth().currentUser;
+    let uid = user.uid;
+    let localMessages = this.state.dbData;
+    localMessages[0].details.expensesDate.push(this.state.date);
+    Firebase.database().ref("/userData").child(uid).set(localMessages);
+    this.setState({ dbData: localMessages });
+  }
+
+  addIncome() {
+    console.log("income added");
+    let user = Firebase.auth().currentUser;
+    let uid = user.uid;
+    let localMessages = this.state.dbData;
+    localMessages[0].details.income.push(this.state.income);
+    Firebase.database().ref("/userData").child(uid).set(localMessages);
+    this.setState({ dbData: localMessages });
+  }
+
+  addIncomeDate() {
+    console.log("income date added");
+    let user = Firebase.auth().currentUser;
+    let uid = user.uid;
+    let localMessages = this.state.dbData;
+    localMessages[0].details.incomeDate.push(this.state.datei);
+    Firebase.database().ref("userData").child(uid).set(localMessages);
+    this.setState({ dbData: localMessages });
+  }
 
   onExpenseFormChange(event) {
     //assign the value of the number in the input box to expense
@@ -76,6 +161,8 @@ class Page1 extends Component {
               onFormChange={this.onExpenseFormChange}
               date={this.state.date}
               onDateChange={this.onExpenseDateChange}
+              addExpense={this.addExpense}
+              addExpenseDate={this.addExpenseDate}
             />
           </div>
         ) : null}
@@ -88,6 +175,8 @@ class Page1 extends Component {
               onForm2Change={this.onInputFormChange}
               datei={this.state.datei}
               onDateiChange={this.onIncomeDateChange}
+              addIncome={this.addIncome}
+              addIncomeDate={this.addIncomeDate}
             />
           </div>
         ) : null}

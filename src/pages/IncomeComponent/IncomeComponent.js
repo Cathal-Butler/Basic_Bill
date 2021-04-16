@@ -5,6 +5,8 @@ const income = (props) => {
   let onForm2Change = props.onForm2Change; //necessary for parent child communication
   let datei = props.datei;
   let onDateiChange = props.onDateiChange;
+  let addIncome = props.addIncome;
+  let addIncomeDate = props.addIncomeDate;
 
   function submitAlert() {
     alert(
@@ -35,7 +37,15 @@ const income = (props) => {
         The amount entered is: €{income} on the [{datei}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
-      <button onClick={submitAlert} class="btn btn-primary btn lg btn-block">
+
+      <button
+        onClick={() => {
+          addIncome();
+          addIncomeDate();
+          submitAlert();
+        }}
+        class="btn btn-primary btn lg btn-block"
+      >
         {" "}
         Submit Income{" "}
       </button>

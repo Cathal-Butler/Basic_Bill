@@ -6,6 +6,8 @@ const expense = (props) => {
   let onFormChange = props.onFormChange; //necessary for parent child communication
   let date = props.date;
   let onDateChange = props.onDateChange;
+  let addExpense = props.addExpense;
+  let addExpenseDate = props.addExpenseDate;
 
   function submitAlert() {
     alert(
@@ -39,7 +41,16 @@ const expense = (props) => {
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
 
-      <button onClick={submitAlert} class="btn btn-primary btn lg btn-block">
+      {/* onclick={()=>{ f1(); f2() }} */}
+
+      <button
+        onClick={() => {
+          addExpense();
+          addExpenseDate();
+          submitAlert();
+        }}
+        class="btn btn-primary btn lg btn-block"
+      >
         {" "}
         Submit Expense{" "}
       </button>
