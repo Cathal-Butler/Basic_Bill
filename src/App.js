@@ -12,6 +12,7 @@ import page5 from "./pages/page5";
 import Logon from "./Logon"; //Importing logon component
 import Signup from "./Signup"; //IMporting signup component
 import Firebase from "firebase"; //App is connect to realtime firebase
+import page31 from "./pages/page31";
 
 class App extends Component {
   constructor(props) {
@@ -113,6 +114,13 @@ class App extends Component {
               >
                 Firebase Test
               </Link>
+              <Link
+                to="/option6"
+                className="link"
+                onClick={this.showMenu.bind(this, "demo")}
+              >
+                page3demo
+              </Link>
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
@@ -124,6 +132,7 @@ class App extends Component {
                 <Route exact path="/option3" component={page3} />
                 <Route exact path="/option4" component={page4} />
                 <Route exact path="/option5" component={page5} />
+                <Route exact path="/option5" component={page31} />
               </Switch>
             </div>
           </Router>
