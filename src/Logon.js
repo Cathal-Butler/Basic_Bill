@@ -60,9 +60,11 @@ class Logon extends Component {
         <h1 class="h1">Please sign in to start saving money! </h1>
         <br />
         {
-          /*If error, Firebase sends message */ error && (
-            <p class="p">ERROR: {error.message}</p>
-          )
+          /*If error, Firebase sends message but only if SignUp button has not been clicked
+          and email address is blank and password is blank */ error &&
+            this.state.showSignUp === false &&
+            { email } === null &&
+            { password } === null(<p class="p">ERROR: {error.message}</p>)
         }
         <form onSubmit={this.handleSubmit}>
           <div class="mb-3, form">
