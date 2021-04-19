@@ -33,6 +33,7 @@ class Page4 extends Component {
     // Make a call to firebase authentication
     // this API will log the user out now.
     Firebase.auth().signOut();
+    window.location.assign("/"); //When a user logs out, assigns the final cookie has the homepage
   }
 
   render() {

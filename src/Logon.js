@@ -33,7 +33,7 @@ class Logon extends Component {
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        console.log("User logged on");
+        window.location.assign("/"); //When a user logs in, it redirects them to the home/dashboard page
       })
       .catch((error) => {
         this.setState({ error: error });
