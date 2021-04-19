@@ -71,13 +71,13 @@ class App extends Component {
         {this.state.authenticated && ( //Display all of the pages if the user is logged in.
           <Router>
             <div id="menu">
-              {/* <Link
+              <Link
                 to="/"
                 className="link"
                 onClick={this.showMenu.bind(this, "Home")}
               >
-                Login or Sign-Up
-              </Link> */}
+                Home
+              </Link>
               <Link
                 to="/option1"
                 className="link"
@@ -125,8 +125,8 @@ class App extends Component {
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
               >
+                <Route exact path="/" component={home} />
                 <Route exact path="/" component={page2} />
-                {/* <Route exact path="/" component={home} /> */}
                 <Route exact path="/option2" component={page1} />
                 <Route exact path="/option1" component={page2} />
                 <Route exact path="/option3" component={page3} />
