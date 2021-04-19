@@ -190,6 +190,7 @@ class Page1 extends Component {
               onDateChange={this.onExpenseDateChange}
               addExpense={this.addExpense}
               addExpenseDate={this.addExpenseDate}
+              currentUser={this.state.currentUser}
             />
           </div>
         ) : null}
@@ -204,6 +205,7 @@ class Page1 extends Component {
               onDateiChange={this.onIncomeDateChange}
               addIncome={this.addIncome}
               addIncomeDate={this.addIncomeDate}
+              currentUser={this.state.currentUser}
             />
           </div>
         ) : null}

@@ -7,10 +7,13 @@ const income = (props) => {
   let onDateiChange = props.onDateiChange;
   let addIncome = props.addIncome;
   let addIncomeDate = props.addIncomeDate;
+  let currentUserEmail = props.currentUser.email;
 
   function submitAlert() {
     alert(
-      "Nice work Peter, you have submitted an income of €" +
+      "Nice work " +
+        currentUserEmail +
+        ", you have submitted an income of €" +
         income +
         " on the " +
         datei

@@ -8,10 +8,13 @@ const expense = (props) => {
   let onDateChange = props.onDateChange;
   let addExpense = props.addExpense;
   let addExpenseDate = props.addExpenseDate;
+  let currentUserEmail = props.currentUser.email;
 
   function submitAlert() {
     alert(
-      "Good work Peter, you have submitted an expense of €" +
+      "Good work " +
+        currentUserEmail +
+        ", you have submitted an expense of €" +
         expense +
         " on the " +
         date
