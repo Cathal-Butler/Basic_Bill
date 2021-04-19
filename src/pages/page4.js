@@ -7,8 +7,26 @@ class Page4 extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      currentUser: null
+    };
+
     this.logOutUser = this.logOutUser.bind(this);
   } // end constructor
+
+  componentDidMount() {
+    Firebase.auth().onAuthStateChanged((user) => {
+      user
+        ? this.setState(() => ({
+            authenticated: true,
+            currentUser: user
+          }))
+        : this.setState(() => ({
+            authenticated: false,
+            currentUser: null
+          }));
+    });
+  }
 
   //Firebase will handle logout matters
   logOutUser() {
@@ -22,12 +40,16 @@ class Page4 extends Component {
       <div className="Logout" id="logout-bgimage">
         <h2 class="h2">
           {" "}
-          We are sorry to see you go...
-          <br />
+          {this.state.currentUser !== null && (
+            <p>
+              {" "}
+              We are sorry to see you go <br />
+              {this.state.currentUser.email}{" "}
+            </p>
+          )}
           We hope you enjoyed using Basic Bill
           <br />
           <br />
-          Click the button below to logout{" "}
         </h2>
         <button
           style={{ float: "left" }} //Override default Bootstrap Style

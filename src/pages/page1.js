@@ -14,7 +14,15 @@ class Page1 extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { expense: "", income: "", date: "", datei: "", dbData: [] }; //track states of inputs
+    this.state = {
+      expense: "",
+      income: "",
+      date: "",
+      datei: "",
+      dbData: [],
+      authenticated: false,
+      currentUser: null
+    }; //track states of inputs
 
     //inform React of event functions
     this.onExpenseFormChange = this.onExpenseFormChange.bind(this);
@@ -29,6 +37,17 @@ class Page1 extends Component {
   } //end constructor
 
   componentDidMount() {
+    Firebase.auth().onAuthStateChanged((user) => {
+      user
+        ? this.setState(() => ({
+            authenticated: true,
+            currentUser: user
+          }))
+        : this.setState(() => ({
+            authenticated: false,
+            currentUser: null
+          }));
+    });
     // as soon as the component mounts, get the most recent messages from the firebase database.
 
     this.getMessagesFromDatabase();
@@ -139,7 +158,15 @@ class Page1 extends Component {
   render() {
     return (
       <div id="page1">
-        <h1>Peter, would you like to enter your Expense or Income? </h1>
+        {this.state.currentUser !== null && (
+          <h4>
+            Hello{" "}
+            <i>
+              <b>{this.state.currentUser.email}</b>
+            </i>
+            , please enter your expense or income below:{" "}
+          </h4>
+        )}
         <button
           class="btn btn-secondary btn-lg btn-block"
           onClick={this.toggleExpenseHandler}
