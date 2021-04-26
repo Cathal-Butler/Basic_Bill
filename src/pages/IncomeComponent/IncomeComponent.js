@@ -1,4 +1,6 @@
 import React from "react";
+import moment from "moment";
+
 //Component for entering income
 const income = (props) => {
   let income = props.income; //necessary for parent child communication
@@ -16,7 +18,7 @@ const income = (props) => {
         ", you have submitted an income of €" +
         income +
         " on the " +
-        datei
+        moment(datei).format(`Do of MMMM YYYY`) //Human readable format
     );
   }
   return (
@@ -37,7 +39,8 @@ const income = (props) => {
         <input type="date" value={datei} onChange={onDateiChange}></input>
       </form>
       <p>
-        The amount entered is: €{income} on the [{datei}]
+        The amount entered is: €{income} on the [
+        {moment(datei).format(`Do of MMMM YYYY`)}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
 

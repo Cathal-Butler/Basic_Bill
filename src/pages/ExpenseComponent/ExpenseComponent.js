@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment"; //Moment dependency added to allow date be viewed in more User Friendly Way
 //Component for entering expense
 
 const expense = (props) => {
@@ -17,7 +18,7 @@ const expense = (props) => {
         ", you have submitted an expense of €" +
         expense +
         " on the " +
-        date
+        moment(date).format(`Do of MMMM YYYY`) //Human readable format
     );
   }
 
@@ -40,11 +41,10 @@ const expense = (props) => {
       </form>
 
       <p>
-        The amount entered is: €{expense} on the [{date}]
+        The amount entered is: €{expense} on the [
+        {moment(date).format(`Do of MMMM YYYY`)}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
-
-      {/* onclick={()=>{ f1(); f2() }} */}
 
       <button
         onClick={() => {
