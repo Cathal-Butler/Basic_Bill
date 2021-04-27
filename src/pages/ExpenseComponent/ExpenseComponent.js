@@ -22,6 +22,17 @@ const expense = (props) => {
     );
   }
 
+  function stopSubmit() {
+    //Users will only be allowed submit an expense or an income if:
+    //1. The date is today or in the past
+    //2. The date is not blank
+    //3. The income is not blank
+    // Returns true if any of them are not met
+    const currentTime = moment();
+    if (moment(date) > currentTime || date === "" || expense === "")
+      return true;
+  }
+
   return (
     <div class="card-body">
       <h2>Expense</h2>
@@ -45,18 +56,36 @@ const expense = (props) => {
         {moment(date).format(`Do of MMMM YYYY`)}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
+      {stopSubmit() && (
+        <button class="btn btn-secondary btn lg btn-block" disabled>
+          Submit Expense
+        </button>
+      )}
 
-      <button
-        onClick={() => {
-          addExpense();
-          addExpenseDate();
-          submitAlert();
-        }}
-        class="btn btn-primary btn lg btn-block"
-      >
-        {" "}
-        Submit Expense{" "}
-      </button>
+      {stopSubmit() && ( //Shows unless all 3 requirements are met
+        <p>
+          {" "}
+          <b>
+            {" "}
+            Please ensure that you have entered an expense value and the date
+            you have selected is in the past{" "}
+          </b>{" "}
+        </p>
+      )}
+
+      {!stopSubmit() && ( //when all conditions of stopSubmit are met, condition will be false so submission will be allowed
+        <button
+          onClick={() => {
+            addExpense();
+            addExpenseDate();
+            submitAlert();
+          }}
+          class="btn btn-primary btn lg btn-block"
+        >
+          {" "}
+          Submit Expense{" "}
+        </button>
+      )}
     </div>
   );
 };
