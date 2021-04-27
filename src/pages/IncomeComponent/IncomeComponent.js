@@ -56,12 +56,17 @@ const income = (props) => {
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
       {stopSubmit() && (
-        <p>
+        <button class="btn btn-secondary btn lg btn-block" disabled>
           {" "}
+          Submit Income{" "}
+        </button>
+      )}
+      {stopSubmit() && (
+        <p>
           <b>
-            Please make sure you have entered an income value and the date you
+            Please ensure that you have entered an income value and the date you
             have selected is in the past
-          </b>{" "}
+          </b>
         </p>
       )}
 
