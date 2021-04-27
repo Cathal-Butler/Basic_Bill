@@ -21,6 +21,18 @@ const income = (props) => {
         moment(datei).format(`Do of MMMM YYYY`) //Human readable format
     );
   }
+
+  function stopSubmit() {
+    //Users will only be allowed submit an expense or an income if:
+    //1. The date is today or in the past
+    //2. The date is not blank
+    //3. The income is not blank
+    //4. Returns true if any of them are not met
+    const currentTime = moment();
+    if (moment(datei) > currentTime || datei === "" || income === "")
+      return true;
+  }
+
   return (
     <div class="card body">
       <h2>Income</h2>
@@ -43,18 +55,29 @@ const income = (props) => {
         {moment(datei).format(`Do of MMMM YYYY`)}]
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
+      {stopSubmit() && (
+        <p>
+          {" "}
+          <b>
+            Please make sure you have entered an income value and the date you
+            have selected is in the past
+          </b>{" "}
+        </p>
+      )}
 
-      <button
-        onClick={() => {
-          addIncome();
-          addIncomeDate();
-          submitAlert();
-        }}
-        class="btn btn-primary btn lg btn-block"
-      >
-        {" "}
-        Submit Income{" "}
-      </button>
+      {!stopSubmit() && ( //When all conditions of allowSubmit are met, show this button
+        <button
+          onClick={() => {
+            addIncome();
+            addIncomeDate();
+            submitAlert();
+          }}
+          class="btn btn-primary btn lg btn-block"
+        >
+          {" "}
+          Submit Income{" "}
+        </button>
+      )}
     </div>
   );
 };
