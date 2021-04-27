@@ -57,8 +57,7 @@ const income = (props) => {
       <p>If this is correct, click the button below to submit your data: </p>
       {stopSubmit() && (
         <button class="btn btn-secondary btn lg btn-block" disabled>
-          {" "}
-          Submit Income{" "}
+          Submit Income
         </button>
       )}
       {stopSubmit() && (
