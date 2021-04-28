@@ -29,7 +29,12 @@ const income = (props) => {
     //3. The income is not blank
     //4. Returns true if any of them are not met
     const currentTime = moment();
-    if (moment(datei) > currentTime || datei === "" || income === "")
+    if (
+      moment(datei) > currentTime ||
+      datei === "" ||
+      income === "" ||
+      income <= parseInt("0", 2)
+    )
       return true;
   }
 

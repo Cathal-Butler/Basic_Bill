@@ -29,7 +29,12 @@ const expense = (props) => {
     //3. The income is not blank
     // Returns true if any of them are not met
     const currentTime = moment();
-    if (moment(date) > currentTime || date === "" || expense === "")
+    if (
+      moment(date) > currentTime ||
+      date === "" ||
+      expense === "" ||
+      expense <= parseInt("0", 2)
+    )
       return true;
   }
 
@@ -41,6 +46,7 @@ const expense = (props) => {
         <label>Amount: </label>
         <input
           type="number"
+          min="0"
           placeholder="€"
           value={expense}
           onChange={onFormChange}
