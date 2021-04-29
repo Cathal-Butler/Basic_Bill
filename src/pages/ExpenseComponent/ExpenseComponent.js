@@ -45,6 +45,7 @@ const expense = (props) => {
       <form>
         <label>Amount: </label>
         <input
+          id="expenseAmount"
           type="number"
           min="0"
           placeholder="€"
@@ -54,7 +55,12 @@ const expense = (props) => {
       </form>
       <form>
         <label>Input Date of Expense: </label>
-        <input type="date" value={date} onChange={onDateChange} />
+        <input
+          id="expenseDate"
+          type="date"
+          value={date}
+          onChange={onDateChange}
+        />
       </form>
 
       <p>
@@ -63,7 +69,11 @@ const expense = (props) => {
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
       {stopSubmit() && (
-        <button class="btn btn-secondary btn lg btn-block" disabled>
+        <button
+          id="submitExpense"
+          class="btn btn-secondary btn lg btn-block"
+          disabled
+        >
           Submit Expense
         </button>
       )}
@@ -81,6 +91,7 @@ const expense = (props) => {
 
       {!stopSubmit() && ( //when all conditions of stopSubmit are met, condition will be false so submission will be allowed
         <button
+          id="submitExpense"
           onClick={() => {
             addExpense();
             addExpenseDate();
