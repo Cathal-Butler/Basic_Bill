@@ -104,6 +104,7 @@ class Home extends Component {
     this.setState({ dbData: localMessages });
   }
 
+  //The below code features a map function which is in progress. The goal is to display the latest element in the array
   render() {
     return (
       //The below conditional rendering, creates a default empty object for the user once they click the button
@@ -121,9 +122,17 @@ class Home extends Component {
             now!{" "}
           </h2>
         )}
+
+        <p>Your most recent expense was: </p>
+        {this.state.dbData.map((data, index) => (
+          <ul key={index}>
+            €{data.details.expenses[data.details.expenses.length - 1]} <br />
+            Date:{" "}
+            {data.details.expensesDate[data.details.expensesDate.length - 1]}
+          </ul>
+        ))}
       </div>
     );
   }
 }
-
 export default withRouter(Home);
