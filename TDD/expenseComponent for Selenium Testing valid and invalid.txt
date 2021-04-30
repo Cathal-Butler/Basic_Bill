@@ -1,0 +1,96 @@
+import React from "react";
+import moment from "moment"; //Moment dependency added to allow date be viewed in more User Friendly Way
+//Component for entering expense
+
+const expense = (props) => {
+  let expense = props.expense; //necessary for parent-child communication
+  let onFormChange = props.onFormChange; //necessary for parent child communication
+  let date = props.date;
+  let onDateChange = props.onDateChange;
+  let addExpense = props.addExpense;
+  let addExpenseDate = props.addExpenseDate;
+  let currentUserEmail = props.currentUser.email;
+
+  function submitAlert() {
+    alert(
+      "Good work " +
+        currentUserEmail +
+        ", you have submitted an expense of €" +
+        expense +
+        " on the " +
+        moment(date).format(`Do of MMMM YYYY`) //Human readable format
+    );
+  }
+
+  function valid() {
+    //Users will only be allowed submit an expense or an income if:
+    //1. The date is today or in the past
+    //2. The date is not blank
+    //3. The income is not blank
+    // Returns true if any of them are not met
+    const currentTime = moment();
+    if (
+      moment(date) > currentTime ||
+      date === "" ||
+      expense === "" ||
+      expense <= parseInt("0", 2)
+    )
+      return false; //If any of these are true, it's invalid so if true, it's valid.
+    return (
+      //if true
+      <div id="testResult">
+        {" "}
+        <p id="result">Valid </p>{" "}
+      </div>
+    );
+  }
+
+  function invalid() {
+    const currentTime = moment();
+    if (
+      moment(date) < currentTime &&
+      date !== "" &&
+      expense !== "" &&
+      expense >= parseInt("0", 2)
+    )
+      return false; //if all of these are true, it's valid so if false, it's invalid
+    return (
+      <div id="testResult">
+        <p id="result">Invalid </p>
+      </div>
+    );
+  }
+
+  return (
+    <div class="card-body">
+      <h2>Expense</h2>
+
+      <form>
+        <label>Amount: </label>
+        <input
+          id="expenseAmount"
+          type="number"
+          min="0"
+          placeholder="€"
+          value={expense}
+          onChange={onFormChange}
+        />
+      </form>
+      <form>
+        <label>Input Date of Expense: </label>
+        <input
+          id="expenseDate"
+          type="date"
+          value={date}
+          onChange={onDateChange}
+        />
+      </form>
+
+      {valid() && valid()}
+
+      {invalid() && invalid()}
+    </div>
+  );
+};
+
+export default expense;
