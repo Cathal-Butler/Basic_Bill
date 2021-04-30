@@ -1,0 +1,12 @@
+//CS353 GROUP NINE PROJECT BASIC BILL
+//TEAM MEMBERS: CONOR TRESTON, PAVEL PROSHKOVICH, SINEAD KILMURRAY, DI YUN YAO
+//TEST DRIVEN DEVELOPMENT: EXPENSES SECTION
+//PURPOSE OF TESTING: 
+	//(1). ENSURES THAT USERS ARE UNABLE TO LEAVE EITHER AN EXPENSE AMOUNT OR EXPENSE DATE BLANK
+	//(2). ENSURES USERS ARE UNABLE TO ENTER TEXT INTO EITHER EXPENSE INPUT OR EXPENSE DATE
+	//(3). ENSURES USERS CANNOT ENTER A FUTURE DATE OF EXPENSE
+
+//NOTES FOR TESTER:
+//Expense Component should be switched to basic testing template expense component which renders valid/invalid to screen
+//The CodeSandbox Project URL should be changed to ensure the current version with expense template component is being tested
+
