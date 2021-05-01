@@ -123,15 +123,25 @@ class Home extends Component {
           </h2>
         )}
 
-        <p>Your most recent expense was: </p>
+        <p> </p>
         {this.state.dbData.map((data, index) => (
-          <ul key={index}>
-            €{data.details.expenses[data.details.expenses.length - 1]} <br />
-            Date:{" "}
-            {data.details.expensesDate[data.details.expensesDate.length - 1]}
-          </ul>
+          <div>
+            <ul key={index}>
+              Your most recent expense was: €
+              {data.details.expenses[data.details.expenses.length - 1]} <br />
+              Date:{" "}
+              {
+                data.details.expensesDate[data.details.expensesDate.length - 1]
+              }{" "}
+              <br />
+              Your most recent income was: €
+              {data.details.income[data.details.income.length - 1]} <br />
+              Date:
+              {data.details.incomeDate[data.details.incomeDate.length - 1]}
+            </ul>
+          </div> //end of most recent/expense or income div
         ))}
-      </div>
+      </div> //end of home div
     );
   }
 }
