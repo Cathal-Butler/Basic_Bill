@@ -56,7 +56,7 @@ class Logon extends Component {
           <br />
           <b>Welcome to Basic Bill </b>{" "}
         </h1>
-        <h1 class="h1">Please sign in to start saving money! </h1>
+        {/* <h1 class="h1">Please sign in to start saving money! </h1> */}
         <br />
         {
           /*If error, Firebase sends message but only if SignUp button has not been clicked
