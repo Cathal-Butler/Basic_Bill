@@ -54,7 +54,6 @@ class Logon extends Component {
         <h1 class="h1">
           {" "}
           <br />
-          <br />
           <b>Welcome to Basic Bill </b>{" "}
         </h1>
         <h1 class="h1">Please sign in to start saving money! </h1>
@@ -107,12 +106,12 @@ class Logon extends Component {
             <Signup />
           </div>
         ) : null}
-
         <br />
         <br />
-        <br />
-        <br />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/255px-Flag_of_Europe.svg.png" />
+        <img
+          id="piggy"
+          src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
+        />
       </div>
     );
   }

@@ -5,6 +5,11 @@
   background-repeat: no repeat;
   background-size: cover;
 }
+
+#piggy {
+  border-radius: 50%;
+  width: 300px;
+}
 .h1 {
   color: white;
   font-family: "Sans Serif";
