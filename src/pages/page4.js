@@ -38,28 +38,34 @@ class Page4 extends Component {
 
   render() {
     return (
-      <div className="Logout" id="logout-bgimage">
-        <h2 class="h2">
-          {" "}
-          {this.state.currentUser !== null && (
-            <p>
-              {" "}
-              We are sorry to see you go <br />
-              {this.state.currentUser.email}{" "}
-            </p>
-          )}
-          We hope you enjoyed using Basic Bill
-          <br />
-          <br />
-        </h2>
+      <div>
+        <br />{" "}
+        {this.state.currentUser !== null && (
+          <div>
+            <h2 class="display-5 text-white">
+              Bye <i> {this.state.currentUser.email} </i>
+            </h2>
+            <br />
+            <h2 class="display-5 text-white">Keep on saving! </h2>
+          </div>
+        )}
+        <br />
+        <br />
         <button
-          style={{ float: "left" }} //Override default Bootstrap Style
           type="button"
-          class="btn btn-lg btn-secondary" //Bootstrap class
+          class="btn btn-lg btn-light" //Bootstrap class
           onClick={this.logOutUser}
         >
           Logout
         </button>
+        <br />
+        <br />
+        <br />
+        <img
+          id="piggy"
+          src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
+          alt="logo"
+        />
       </div> //Simple logout button
     ); // end of return statement
   } // end of render function
