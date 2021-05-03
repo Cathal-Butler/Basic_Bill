@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import myFirebase from "/src/myFirebaseConfig";
 import Firebase from "firebase";
+import "./home.css";
 
 /*Perhaps this page should be changed to a Dashboard page if we are going to stick with the Logon component */
 
@@ -117,10 +118,20 @@ class Home extends Component {
         )}
 
         {this.state.dbData.length > 0 && (
-          <h2>
-            You're all set up, start entering your income, expense and invoices
-            now!{" "}
-          </h2>
+          <div>
+            <img
+              id="piggy"
+              src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
+              alt="logo"
+            />{" "}
+            <br /> <br />
+            <h1 class="display-5 text-secondary">
+              <u>
+                {" "}
+                <strong>Your latest Details: </strong>
+              </u>
+            </h1>
+          </div>
         )}
 
         <br />
