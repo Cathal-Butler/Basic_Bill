@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import myFirebase from "/src/myFirebaseConfig";
 import Firebase from "firebase";
 import "./home.css";
+import moment from "moment";
 
 /*Perhaps this page should be changed to a Dashboard page if we are going to stick with the Logon component */
 
@@ -151,9 +152,11 @@ class Home extends Component {
                         <br />
                         <br />
                         {
-                          data.details.incomeDate[
-                            data.details.incomeDate.length - 1
-                          ]
+                          moment(
+                            data.details.incomeDate[
+                              data.details.incomeDate.length - 1
+                            ]
+                          ).format(`Do of MMMM YYYY`) //Human readable date
                         }
                       </ul>
                     </div> //end of most recent/expense or income div
@@ -179,11 +182,11 @@ class Home extends Component {
                         }{" "}
                         <br />
                         <br />
-                        {
+                        {moment(
                           data.details.expensesDate[
                             data.details.expensesDate.length - 1
                           ]
-                        }
+                        ).format("Do of MMMM YYYY")}
                       </ul>
                     </div> //end of most recent/expense or income div
                   ))}
