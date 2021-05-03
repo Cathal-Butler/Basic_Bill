@@ -158,6 +158,7 @@ class Page1 extends Component {
   render() {
     return (
       <div id="page1">
+        <br />
         {this.state.currentUser !== null && (
           <h4>
             Hello{" "}
@@ -167,14 +168,16 @@ class Page1 extends Component {
             , please enter your expense or income below:{" "}
           </h4>
         )}
+        <br />
         <button
-          class="btn btn-secondary btn-lg btn-block"
+          class="btn btn-secondary btn-lg btn-block btn-danger"
           onClick={this.toggleExpenseHandler}
         >
           Expense
         </button>
+        <br />
         <button
-          class="btn btn-secondary btn-lg btn-block"
+          class="btn btn-secondary btn-lg btn-block btn-success"
           onClick={this.toggleIncomeHandler}
         >
           Income

@@ -71,7 +71,7 @@ const expense = (props) => {
       {stopSubmit() && (
         <button
           id="submitExpense"
-          class="btn btn-secondary btn lg btn-block"
+          class="btn btn-secondary btn lg btn-block btn-danger"
           disabled
         >
           Submit Expense
@@ -97,7 +97,7 @@ const expense = (props) => {
             addExpenseDate();
             submitAlert();
           }}
-          class="btn btn-primary btn lg btn-block"
+          class="btn btn-primary btn lg btn-block btn-danger"
         >
           {" "}
           Submit Expense{" "}

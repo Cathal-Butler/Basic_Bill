@@ -61,7 +61,7 @@ const income = (props) => {
       </p>
       <p>If this is correct, click the button below to submit your data: </p>
       {stopSubmit() && (
-        <button class="btn btn-secondary btn lg btn-block" disabled>
+        <button class="btn btn-secondary btn lg btn-block btn-success" disabled>
           Submit Income
         </button>
       )}
@@ -81,7 +81,7 @@ const income = (props) => {
             addIncomeDate();
             submitAlert();
           }}
-          class="btn btn-primary btn lg btn-block"
+          class="btn btn-primary btn lg btn-block btn-success"
         >
           {" "}
           Submit Income{" "}
