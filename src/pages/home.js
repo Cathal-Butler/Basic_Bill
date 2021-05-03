@@ -125,7 +125,7 @@ class Home extends Component {
               alt="logo"
             />{" "}
             <br /> <br />
-            <h1 class="display-5 text-secondary">
+            <h1 class="display-5 text-white">
               <u>
                 {" "}
                 <strong>Your latest Details: </strong>

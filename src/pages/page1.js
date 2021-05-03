@@ -164,8 +164,9 @@ class Page1 extends Component {
           src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
           alt="logo"
         />{" "}
+        <br /> <br />
         {this.state.currentUser !== null && (
-          <h4>
+          <h4 class="text-white">
             Hello{" "}
             <i>
               <b>{this.state.currentUser.email}</b>
