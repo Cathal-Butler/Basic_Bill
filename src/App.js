@@ -52,12 +52,20 @@ class App extends Component {
         {this.state.authenticated && ( //Once a user has logged in, display the navbar
           <div id="nav">
             <div id="menuText">Home/Dashboard</div>
-            <img
+            {/* <img
               id="menuBtn"
               src="https://images.unsplash.com/photo-1586941962765-d3896cc85ac8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
               onClick={this.showMenu.bind(this, "")}
               alt=""
-            />
+            /> */}
+          </div>
+        )}
+
+        {this.state.authenticated && (
+          <div id="container">
+            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
+            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
+            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
           </div>
         )}
 
