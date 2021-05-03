@@ -159,6 +159,11 @@ class Page1 extends Component {
     return (
       <div id="page1">
         <br />
+        <img
+          id="piggy"
+          src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
+          alt="logo"
+        />{" "}
         {this.state.currentUser !== null && (
           <h4>
             Hello{" "}
@@ -182,7 +187,6 @@ class Page1 extends Component {
         >
           Income
         </button>
-
         {this.state.showExpense === true ? (
           //Wrap expense component in a div so it can be hidden or shown using the ternary operator, if true, show it, else :null (hide it)
           <div>
@@ -197,7 +201,6 @@ class Page1 extends Component {
             />
           </div>
         ) : null}
-
         {this.state.showIncome === true ? (
           //Wrap income component in a div so it can be hidden or shown using the ternary operator.
           <div>
