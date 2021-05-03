@@ -123,24 +123,64 @@ class Home extends Component {
           </h2>
         )}
 
-        <p> </p>
-        {this.state.dbData.map((data, index) => (
-          <div>
-            <ul key={index}>
-              Your most recent expense was: €
-              {data.details.expenses[data.details.expenses.length - 1]} <br />
-              Date:{" "}
-              {
-                data.details.expensesDate[data.details.expensesDate.length - 1]
-              }{" "}
-              <br />
-              Your most recent income was: €
-              {data.details.income[data.details.income.length - 1]} <br />
-              Date:
-              {data.details.incomeDate[data.details.incomeDate.length - 1]}
-            </ul>
-          </div> //end of most recent/expense or income div
-        ))}
+        <br />
+        <br />
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card text-white card text-center bg-success mb-3">
+              <div class="card-body">
+                <h3 class="card-title">Latest Income:</h3>
+                <h4 class="card-subtitle mb-2 text-white">
+                  <br />
+                  {this.state.dbData.map((data, index) => (
+                    <div>
+                      <ul key={index}>
+                        €{data.details.income[data.details.income.length - 1]}{" "}
+                        <br />
+                        <br />
+                        {
+                          data.details.incomeDate[
+                            data.details.incomeDate.length - 1
+                          ]
+                        }
+                      </ul>
+                    </div> //end of most recent/expense or income div
+                  ))}
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card text-white card text-center bg-danger mb-3">
+              <div class="card-body">
+                <h3 class="card-title">Latest Expense:</h3>
+                <h4 class="card-subtitle mb-2 text-white">
+                  <br />
+                  {this.state.dbData.map((data, index) => (
+                    <div>
+                      <ul key={index}>
+                        €
+                        {
+                          data.details.expenses[
+                            data.details.expenses.length - 1
+                          ]
+                        }{" "}
+                        <br />
+                        <br />
+                        {
+                          data.details.expensesDate[
+                            data.details.expensesDate.length - 1
+                          ]
+                        }
+                      </ul>
+                    </div> //end of most recent/expense or income div
+                  ))}
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div> //end of home div
     );
   }
