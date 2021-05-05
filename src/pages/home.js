@@ -113,9 +113,23 @@ class Home extends Component {
       //Once the user has an object, the button will not appear again
       <div id="home">
         {this.state.dbData.length <= 0 && (
-          <button onClick={this.generateRandomObject} class="btn btn-primary">
-            Click here to get started{" "}
-          </button>
+          <div>
+            <br />
+            <br />
+            <br />
+            <button
+              class="btn btn-secondary btn-lg btn-success"
+              onClick={this.generateRandomObject}
+            >
+              Click here to get started{" "}
+            </button>
+            <br />
+            <img
+              id="piggy"
+              src="https://i.pinimg.com/originals/81/d2/00/81d200d48f6d13e1c132ecf37b7606b1.gif"
+              alt="logo"
+            />{" "}
+          </div>
         )}
 
         {this.state.dbData.length > 0 && (
@@ -138,63 +152,65 @@ class Home extends Component {
         <br />
         <br />
 
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card text-white card text-center bg-success mb-3">
-              <div class="card-body">
-                <h3 class="card-title">Latest Income:</h3>
-                <h4 class="card-subtitle mb-2 text-white">
-                  <br />
-                  {this.state.dbData.map((data, index) => (
-                    <div>
-                      <ul key={index}>
-                        €{data.details.income[data.details.income.length - 1]}{" "}
-                        <br />
-                        <br />
-                        {
-                          moment(
-                            data.details.incomeDate[
-                              data.details.incomeDate.length - 1
+        {this.state.dbData.length > 0 && (
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="card text-white card text-center bg-success mb-3">
+                <div class="card-body">
+                  <h3 class="card-title">Latest Income:</h3>
+                  <h4 class="card-subtitle mb-2 text-white">
+                    <br />
+                    {this.state.dbData.map((data, index) => (
+                      <div>
+                        <ul key={index}>
+                          €{data.details.income[data.details.income.length - 1]}{" "}
+                          <br />
+                          <br />
+                          {
+                            moment(
+                              data.details.incomeDate[
+                                data.details.incomeDate.length - 1
+                              ]
+                            ).format(`Do of MMMM YYYY`) //Human readable date
+                          }
+                        </ul>
+                      </div> //end of most recent/expense or income div
+                    ))}
+                  </h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card text-white card text-center bg-danger mb-3">
+                <div class="card-body">
+                  <h3 class="card-title">Latest Expense:</h3>
+                  <h4 class="card-subtitle mb-2 text-white">
+                    <br />
+                    {this.state.dbData.map((data, index) => (
+                      <div>
+                        <ul key={index}>
+                          €
+                          {
+                            data.details.expenses[
+                              data.details.expenses.length - 1
                             ]
-                          ).format(`Do of MMMM YYYY`) //Human readable date
-                        }
-                      </ul>
-                    </div> //end of most recent/expense or income div
-                  ))}
-                </h4>
+                          }{" "}
+                          <br />
+                          <br />
+                          {moment(
+                            data.details.expensesDate[
+                              data.details.expensesDate.length - 1
+                            ]
+                          ).format("Do of MMMM YYYY")}
+                        </ul>
+                      </div> //end of most recent/expense or income div
+                    ))}
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-6">
-            <div class="card text-white card text-center bg-danger mb-3">
-              <div class="card-body">
-                <h3 class="card-title">Latest Expense:</h3>
-                <h4 class="card-subtitle mb-2 text-white">
-                  <br />
-                  {this.state.dbData.map((data, index) => (
-                    <div>
-                      <ul key={index}>
-                        €
-                        {
-                          data.details.expenses[
-                            data.details.expenses.length - 1
-                          ]
-                        }{" "}
-                        <br />
-                        <br />
-                        {moment(
-                          data.details.expensesDate[
-                            data.details.expensesDate.length - 1
-                          ]
-                        ).format("Do of MMMM YYYY")}
-                      </ul>
-                    </div> //end of most recent/expense or income div
-                  ))}
-                </h4>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div> //end of home div
     );
   }
