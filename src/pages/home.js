@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import myFirebase from "/src/myFirebaseConfig";
+import myFirebase from ".././myFirebaseConfig";
 import Firebase from "firebase";
 import "./home.css";
 import moment from "moment";

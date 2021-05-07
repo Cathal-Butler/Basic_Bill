@@ -10,6 +10,7 @@ import "echarts/lib/component/tooltip";
 import "echarts/lib/component/title";
 import "echarts/lib/component/legend";
 import "echarts/lib/component/markPoint";
+import aaa from ".././localData.json";
 
 const data = userData;
 function flexibleSelectID(id) {
@@ -37,12 +38,22 @@ class Page2 extends Component {
   barchartClick() {
     $("#piechart").toggle();
   }
+  test321(){
+    var name = "333"
+
+    return (<div>
+      <p>hahaha{name}</p>
+
+    </div>);
+  }
   
   render() {
     console.log(data);
 
     return (
       <div className="App">
+          {console.log(JSON.stringify(aaa))}
+          {this.test321()}
         {/* <h1>Data Object (Map Function/Filter Function Test): </h1>
         <p>Test Paragraph </p> */}
         {data.filter(flexibleSelectID(9)).map((

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import Expense from "./ExpenseComponent/ExpenseComponent";
 import Income from "./IncomeComponent/IncomeComponent";
-import myFirebase from "/src/myFirebaseConfig";
+import myFirebase from ".././myFirebaseConfig";
 import Firebase from "firebase";
 import { timers } from "jquery";
 

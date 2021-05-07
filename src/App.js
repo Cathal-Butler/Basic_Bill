@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./styles.css";
 import { Route, Switch, BrowserRouter as Router, Link } from "react-router-dom"; //App uses routing to navigate from page to page (See Dependencies)
 import $ from "jquery";
-import "bootstrap/dist/css/bootstrap.css"; //Styling purposes
+// import "bootstrap/dist/css/bootstrap.css"; //Styling purposes
 import home from "./pages/home"; //Importing the pages for routing
 import page1 from "./pages/page1";
 import page2 from "./pages/page2";
@@ -140,7 +140,7 @@ class App extends Component {
                 <Route exact path="/option3" component={page3} />
                 <Route exact path="/option4" component={page4} />
                 <Route exact path="/option5" component={page5} />
-                <Route exact path="/option5" component={page31} />
+                <Route exact path="/option6" component={page31} />
               </Switch>
             </div>
           </Router>

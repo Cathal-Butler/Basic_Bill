@@ -1,40 +1,18 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./page3.css";
-import {userData} from "./data.js";
+import { userData } from "./data.js";
 import $ from "jquery";
 //import {Table} from "bootstrap";
 import yesBtn from "./img/yesBtn.png";
 //import noBtn from "./img/noBtn.png";
+import { data } from ".././localData";
+let i = 0;
 
-let i = 0; 
-const data = userData;
 function flexibleSelectID(id) {
   return function (userObject) {
     return userObject.userID === id;
   };
-}
-function total( arr){
-  // console.log(arr +"show data");
-  var s = 0;
-    arr.forEach(function(val, idx, arr) {
-        s += val;
-    }, 0);
-    // console.log("total income is "+s);
-    return s;
-  // return 0; 
- 
-}
-function getBalance(arr1,arr2){
-  var s1 = 0;
-    arr1.forEach(function(val, idx, arr) {
-        s1 += val;
-    }, 0);
-    var s2 = 0;
-    arr2.forEach(function(val, idx, arr) {
-        s2 += val;
-    }, 0);
-    return s1-s2;
 }
 
 class Page3 extends Component {
@@ -44,12 +22,7 @@ class Page3 extends Component {
     this.delete = this.delete.bind(this);
     this.edit = this.edit.bind(this);
     this.state = {
-      lists: [],
-      income: total(data[8].income),
-      expense:total(data[8].expenses),
-      balance:getBalance(data[8].income,data[8].expenses),
-      ignore: false,
-      
+      lists: userData
     };
   }
 
@@ -116,18 +89,18 @@ class Page3 extends Component {
         $("#editBox").hide();
       });
   }
-// originalWaringing(number){
-  
-//   if (number< 0) {
-//     $("#messageBox").show();
-//   }
-//   return number;
-// }
+  // originalWaringing(number){
+
+  //   if (number< 0) {
+  //     $("#messageBox").show();
+  //   }
+  //   return number;
+  // }
   //计算expense和balance判断要不要跳出warning
   checking(info, oldInvoice) {
     let input = parseInt(this.state.income, 10);
     let output = parseInt(this.state.expense, 10);
-    var balance=input-output;
+    var balance = input - output;
     if (balance < 0) {
       $("#messageBox").show();
     }
@@ -168,19 +141,18 @@ class Page3 extends Component {
 
   render() {
     return (
-
       <div>
         <div>
           {data.filter(flexibleSelectID(9)).map((
-              d //Map/Filter function on the test data
-              ) => (
-              <div key={d.userID}>
-           <li>
-              <b>UserID: </b> {" " + d.userID + " "}
-              <b> Name: </b> {" " + d.name + " "}
-          </li>
-      </div>
-))}
+            d //Map/Filter function on the test data
+          ) => (
+            <div key={d.userID}>
+              <li>
+                <b>UserID: </b> {" " + d.userID + " "}
+                <b> Name: </b> {" " + d.name + " "}
+              </li>
+            </div>
+          ))}
         </div>
         <input type="text" id="addValue" placeholder="Enter Bill's amount" />
         <input type="month" id="addDate" placeholder="Enter bill's due date" />
