@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 ///import myFirebase from "/src/myFirebaseConfig";
 import firebase from "firebase/app";
-import "firebase/database";
+
 import $ from "jquery";
 import data from ".././localData";
 import "./page3.css";
-import yesBtn from "./img/noBtn.png";
+import yesBtn from "./img/submit.png";
 //import {Table} from "bootstrap";
 let i = 0; // tempo id
 class page31 extends Component {
@@ -53,16 +53,58 @@ class page31 extends Component {
     const index = e.target.getAttribute("data-index");
     //date:list 对应的index的 date
     const list = this.state.dataList;
-    $("#" + index)
-      .eq(1)
-      .remove();
+    $("#" + index).remove();
 
     this.setState({ dataList: list });
     console.log("delete" + JSON.stringify(index));
   }
+
   editInvoice(e) {
-    console.log(111);
+    const list = this.state.dataList;
     $("#editBox").show();
+    const index = e.target.getAttribute("data-index");
+    $("#editCata").val(
+      $("#" + index)
+        .children()
+        .eq(0)
+        .text()
+    );
+    $("#editCata").val();
+    let oldInvoice = parseInt(
+      $("#" + index)
+        .children()
+        .eq(1)
+        .text(),
+      10
+    );
+    $("#editValue").val(oldInvoice);
+    $("#editDate").val(
+      $("#" + index)
+        .children()
+        .eq(2)
+        .text()
+    );
+    $("#submitBtn")
+      .off("click")
+      .click(function () {
+        let cata = $("#editCata").val();
+        let info = parseInt($("#editValue").val(), 10);
+        let date = $("#editDate").val();
+
+        $("#" + index)
+          .children()
+          .eq(0)
+          .text(cata);
+        $("#" + index)
+          .children()
+          .eq(1)
+          .text(info);
+        $("#" + index)
+          .children()
+          .eq(2)
+          .text(date);
+        $("#editBox").hide();
+      });
   }
 
   render() {
@@ -97,8 +139,8 @@ class page31 extends Component {
                   cata={each.catagory}
                   info={each.price}
                   date={each.date}
-                  delete={this.deleteInvoice}
-                  edit={this.editInvoice}
+                  deleteInvoice={this.deleteInvoice}
+                  editInvoice={this.editInvoice}
                 />
               );
             })}
