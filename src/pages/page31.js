@@ -10,6 +10,7 @@ import yesBtn from "./img/submit.png";
 import okBtn from "./img/okBtn.png";
 //import {Table} from "bootstrap";
 let i = 0; // tempo id
+
 class page31 extends Component {
   constructor(props) {
     super(props);
@@ -63,6 +64,10 @@ class page31 extends Component {
     this.setState({ dataList: list });
     console.log("delete" + JSON.stringify(index));
   }
+  refresh() {
+    console.log(111);
+    this.setState({ dataList: data });
+  }
 
   editInvoice(e) {
     //const list = this.state.dataList;
@@ -89,32 +94,36 @@ class page31 extends Component {
         .eq(2)
         .text()
     );
+    let refreshV = this.refresh.bind(this);
     $("#submitBtn")
       .off("click")
       .click(function () {
         let cata = $("#editCata").val();
         let info = parseInt($("#editValue").val(), 10);
         let month = $("#editDate").val();
+        console.log("the index" + index);
         for (var i = 0; i < data.length; i++) {
-          if (data[i].id === index) {
+          if (data[i].id == index) {
+            console.log("into if" + 111);
             data[i].catagory = cata;
             data[i].price = info;
             data[i].date = month;
           }
         }
-        this.setState({ dataList: list });
-        $("#" + index)
-          .children()
-          .eq(0)
-          .text(cata);
-        $("#" + index)
-          .children()
-          .eq(1)
-          .text(info);
-        $("#" + index)
-          .children()
-          .eq(2)
-          .text(month);
+        console.log(JSON.stringify(data));
+        refreshV();
+        // $("#" + index)
+        //   .children()
+        //   .eq(0)
+        //   .text(cata);
+        // $("#" + index)
+        //   .children()
+        //   .eq(1)
+        //   .text(info);
+        // $("#" + index)
+        //   .children()
+        //   .eq(2)
+        //   .text(month);
         $("#editBox").hide();
       });
   }
@@ -158,7 +167,7 @@ class page31 extends Component {
                 />
               );
             })}
-            ;
+            <th>total:{this.totalInvoice()}</th>
           </tbody>
         </table>
         <div id="messageBox">
