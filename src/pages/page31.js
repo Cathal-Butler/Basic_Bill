@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 ///import myFirebase from "/src/myFirebaseConfig";
 import firebase from "firebase/app";
-import "bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from "jquery";
 import data from ".././localData";
 import "./page3.css";

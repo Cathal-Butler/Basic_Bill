@@ -12,7 +12,7 @@ import "echarts/lib/component/title";
 import "echarts/lib/component/legend";
 import "echarts/lib/component/markPoint";
 import userData from ".././localData.json";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const data = userData;
 
 function filterFixedData(e) {
@@ -20,7 +20,11 @@ function filterFixedData(e) {
     return object.catagory === e;
   };
 }
-
+function filterYear(e) {
+  return function (object) {
+    return object.date;
+  };
+}
 class Page2 extends Component {
   constructor(props) {
     super(props);
