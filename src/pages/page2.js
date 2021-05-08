@@ -20,6 +20,11 @@ function filterCata(e) {
     return object.catagory === e;
   };
 }
+
+function getYearData() {
+  var year = $("#typeYear").val();
+  console.log(year);
+}
 class Page2 extends Component {
   constructor(props) {
     super(props);
@@ -95,7 +100,12 @@ class Page2 extends Component {
         {this.renderTable()}
         <div className="chooseYear">
           <p>Please type in the year of invoice:</p>
-          <input type="text" id="typeYear" />
+          <input type="year" id="typeYear" placeholder="2019-2023" />
+          {$("#typeYear").val()}
+          <button onClick={getYearData()}>
+          onClick
+          </button>
+         
         </div>
       </div>
     );
