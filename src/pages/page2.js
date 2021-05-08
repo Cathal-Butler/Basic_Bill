@@ -15,6 +15,11 @@ import userData from ".././localData.json";
 
 const data = userData;
 
+function filterCata(e) {
+  return function (object) {
+    return object.catagory === e;
+  };
+}
 class Page2 extends Component {
   constructor(props) {
     super(props);
@@ -48,16 +53,17 @@ class Page2 extends Component {
   //   console.log(invoiceArr);
   // }
   getMonthInvoice() {}
-  filterCata(e) {
-    return function (object) {
-      return object.catagory === e;
-    };
-  }
+
+  // filterCata(e) {
+  //   return function (object) {
+  //     return object.catagory === e;
+  //   };
+  // }
   renderTable(userData) {
     var list = this.state.dataList;
     return (
       <div className="showTable">
-        <strong>Fixrd invoice</strong>
+        <strong>Fixed invoice</strong>
         <table className="table table-sm table-bordered">
           <thead>
             <tr>
@@ -66,11 +72,13 @@ class Page2 extends Component {
             </tr>
           </thead>
           <tbody>
-            {list.filterCata("fixed").map((e) => {
-              <tr key={e.id}>
-                <td>{e.price}</td>
-                <td>{e.date}</td>
-              </tr>;
+            {list.filter(filterCata("fixed")).map((e) => {
+              return (
+                <tr key={e.id}>
+                  <td>{e.price}</td>
+                  <td>{e.date}</td>
+                </tr>
+              );
             })}
           </tbody>
         </table>
@@ -84,10 +92,11 @@ class Page2 extends Component {
     return (
       <div className="App">
         {console.log(JSON.stringify(data))}
-        {this.test321()}
-        {/* <h1>Data Object (Map Function/Filter Function Test): </h1>
-        <p>Test Paragraph </p> */}
         {this.renderTable()}
+        <div className="chooseYear">
+          <p>Please type in the year of invoice:</p>
+          <input type="text" id="typeYear" />
+        </div>
       </div>
     );
   }

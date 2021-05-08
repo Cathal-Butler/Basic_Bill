@@ -39,12 +39,22 @@ class page31 extends Component {
     let cata = $("#addCatagory").val().toLowerCase();
     let info = parseInt($("#addValue").val(), 10);
     let month = $("#addDate").val();
+    let year = month.substring(0, 4);
+
+    let yearNum = parseInt(year);
+
+    var flag = false;
+    if (2018 < yearNum && yearNum < 2024) {
+      flag = true;
+    }
     if (
-      cata === "fixed" ||
-      cata === "food" ||
-      cata === "clothes" ||
-      cata === "travel"
+      (cata === "fixed" ||
+        cata === "food" ||
+        cata === "clothes" ||
+        cata === "travel") &&
+      flag
     ) {
+      console.log(cata);
       data.push({ id: ++i, catagory: cata, price: info, date: month });
     } else {
       $("#messageBox").show();
@@ -173,8 +183,9 @@ class page31 extends Component {
         <div id="messageBox">
           <p id="message" />
           <p id="warning">
-            Please only choose one of the
-            kinds(fixed/food/clothes/travel/insurance) then type in
+            Please check catagory must be one of four kinds
+            (fixed/food/clothes/travel/insurance) The invoice date is only
+            available over the peroid(2019-2023)
           </p>
           <img
             id="yesBtn"
