@@ -23,6 +23,7 @@ class Page2 extends Component {
     this.state = {
       dataList: data
     };
+    this.renderTable = this.renderTable.bind(this);
   } // end constructor
   piechartClick() {
     $("#piechart").toggle();
@@ -46,13 +47,14 @@ class Page2 extends Component {
   //   })
   //   console.log(invoiceArr);
   // }
+  getMonthInvoice() {}
   filterCata(e) {
     return function (object) {
-      return object.catagory === "fixed";
+      return object.catagory === e;
     };
   }
   renderTable(userData) {
-    var list = userData;
+    var list = this.state.dataList;
     return (
       <div className="showTable">
         <strong>Fixrd invoice</strong>
@@ -63,7 +65,14 @@ class Page2 extends Component {
               <th>Date</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {list.filterCata("fixed").map((e) => {
+              <tr key={e.id}>
+                <td>{e.price}</td>
+                <td>{e.date}</td>
+              </tr>;
+            })}
+          </tbody>
         </table>
       </div>
     );
@@ -78,6 +87,7 @@ class Page2 extends Component {
         {this.test321()}
         {/* <h1>Data Object (Map Function/Filter Function Test): </h1>
         <p>Test Paragraph </p> */}
+        {this.renderTable()}
       </div>
     );
   }

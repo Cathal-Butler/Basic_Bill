@@ -167,7 +167,7 @@ class page31 extends Component {
                 />
               );
             })}
-            <th>total:{this.totalInvoice()}</th>
+            {/* <th>total:{this.totalInvoice()}</th> */}
           </tbody>
         </table>
         <div id="messageBox">
