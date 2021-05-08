@@ -77,6 +77,7 @@ class Page3 extends Component {
       .click(function () {
         let info = parseInt($("#editValue").val(), 10);
         let date = $("#editDate").val();
+
         $("#" + index)
           .children()
           .eq(0)

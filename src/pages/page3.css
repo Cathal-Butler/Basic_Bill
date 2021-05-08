@@ -1,69 +1,66 @@
-#invoiceList{
+#invoiceList {
   margin: auto;
   /* background-color: yellow; */
   text-align: center;
 }
-#invoiceListhead{
-
-
+#invoiceListhead {
+  background-color: pink;
 }
-#invoiceListbody{
-  
+#invoiceListbody {
 }
-#currentIncome{
-width: 30%;
-height: 10%;
-background-color:pink;
-display:inline-block;
-float: left;
-position: relative;
+#currentIncome {
+  width: 30%;
+  height: 10%;
+  background-color: pink;
+  display: inline-block;
+  float: left;
+  position: relative;
 }
-#currentExpense{
-width: 40%;
-height: 10%;
-background-color:lightblue;
-display:inline-block;
-position: relative;
+#currentExpense {
+  width: 40%;
+  height: 10%;
+  background-color: lightblue;
+  display: inline-block;
+  position: relative;
 }
-#currentBalance{
-width: 30%;
-height: 10%;
-background-color:lightgreen;
-display:inline-block;
-float:right;
-position: relative;
+#currentBalance {
+  width: 30%;
+  height: 10%;
+  background-color: lightgreen;
+  display: inline-block;
+  float: right;
+  position: relative;
 }
-#messageBox{
-background-color: lightseagreen;
-width:500px;
-height:500px;
-position: relative;
-left:35%;
-top:50%;
-display: none;
+#messageBox {
+  background-color: pink;
+  width: 300px;
+  height: 200px;
+  position: relative;
+  left: 35%;
+  top: 50%;
+  display: none;
 }
-#yesBtn{
-position:absolute;
-top:70%;
-left:10%;
-
+#yesBtn {
+  position: absolute;
+  top: 70%;
+  left: 25%;
 }
-#noBtn{
-  position:absolute;
-  top:70%;
-  left:50%;
+#noBtn {
+  position: absolute;
+  top: 70%;
+  left: 50%;
 }
-#editBox{
-background-color: lightgrey;
-width:300px;
-height: 200px;
-position: relative;
-left:35%;
-top:50%;
-display: none;
+#editBox {
+  background-color: lightgrey;
+  width: 400px;
+  height: 400px;
+  position: relative;
+  left: 35%;
+  top: 50%;
+  display: none;
 }
-#submitBtn{
-  position:absolute;
-  top:50%;
-  left:30%;
+#submitBtn {
+  position: absolute;
+  top: 50%;
+  left: 10%;
 }

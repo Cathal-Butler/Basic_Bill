@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 ///import myFirebase from "/src/myFirebaseConfig";
 import firebase from "firebase/app";
-
+import "bootstrap";
 import $ from "jquery";
 import data from ".././localData";
 import "./page3.css";
 import yesBtn from "./img/submit.png";
+import okBtn from "./img/okBtn.png";
 //import {Table} from "bootstrap";
 let i = 0; // tempo id
 class page31 extends Component {
@@ -28,21 +29,25 @@ class page31 extends Component {
   //   }
 
   // [END rtdb_write_new_user]
-  getData() {
-    let invoice = firebase.database().ref("invoice");
-
-    console.log(invoice[0].billID);
-  }
 
   test123() {
     data.push({ id: "123", name: "wangDeFa" });
     console.log("1个对象插入成功" + data);
   }
   add() {
-    let cata = $("#addCatagory").val();
+    let cata = $("#addCatagory").val().toLowerCase();
     let info = parseInt($("#addValue").val(), 10);
     let month = $("#addDate").val();
-    data.push({ id: ++i, catagory: cata, price: info, date: month });
+    if (
+      cata === "fixed" ||
+      cata === "food" ||
+      cata === "clothes" ||
+      cata === "travel"
+    ) {
+      data.push({ id: ++i, catagory: cata, price: info, date: month });
+    } else {
+      $("#messageBox").show();
+    }
 
     //console.log(JSON.stringify(data));
     this.setState({ dataList: data });
@@ -60,7 +65,7 @@ class page31 extends Component {
   }
 
   editInvoice(e) {
-    const list = this.state.dataList;
+    //const list = this.state.dataList;
     $("#editBox").show();
     const index = e.target.getAttribute("data-index");
     $("#editCata").val(
@@ -89,8 +94,15 @@ class page31 extends Component {
       .click(function () {
         let cata = $("#editCata").val();
         let info = parseInt($("#editValue").val(), 10);
-        let date = $("#editDate").val();
-
+        let month = $("#editDate").val();
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].id === index) {
+            data[i].catagory = cata;
+            data[i].price = info;
+            data[i].date = month;
+          }
+        }
+        this.setState({ dataList: list });
         $("#" + index)
           .children()
           .eq(0)
@@ -102,11 +114,13 @@ class page31 extends Component {
         $("#" + index)
           .children()
           .eq(2)
-          .text(date);
+          .text(month);
         $("#editBox").hide();
       });
   }
-
+  yesBtnClick() {
+    $("#messageBox").hide();
+  }
   render() {
     return (
       <div>
@@ -114,12 +128,12 @@ class page31 extends Component {
         <input
           type="text"
           id="addCatagory"
-          placeholder="type in fixed or flexible"
+          placeholder="fixed/food/clothes/travel"
         />
         <input type="text" id="addValue" placeholder="Enter Bill's amount" />
         <input type="month" id="addDate" placeholder="Enter bill's due date" />
         <button onClick={this.add.bind(this)}>add new invoice</button>
-        <table id="invoiceList" class="table table-dark">
+        <table id="invoiceList" class="table table-striped">
           <thead id="invoiceListhead">
             <tr>
               <th>Catagory</th>
@@ -144,8 +158,23 @@ class page31 extends Component {
                 />
               );
             })}
+            ;
           </tbody>
         </table>
+        <div id="messageBox">
+          <p id="message" />
+          <p id="warning">
+            Please only choose one of the
+            kinds(fixed/food/clothes/travel/insurance) then type in
+          </p>
+          <img
+            id="yesBtn"
+            className="messageBoxBtn"
+            src={okBtn}
+            alt=""
+            onClick={this.yesBtnClick}
+          />
+        </div>
         <div id="editBox">
           <p id="message" />
           <input type="text" id="editCata" />
@@ -153,6 +182,7 @@ class page31 extends Component {
           <input type="month" id="editDate" />
           <img id="submitBtn" className="editBoxBtn" src={yesBtn} alt="" />
         </div>
+
         <div>{console.log(JSON.stringify(data))}</div>
       </div>
     );

@@ -14,23 +14,16 @@ import "echarts/lib/component/markPoint";
 import userData from ".././localData.json";
 
 const data = userData;
-function flexibleSelectID(id) {
-  return function (userObject) {
-    return userObject.userID === id;
-  };
-}
-function total(arr) {
-  // console.log(arr +"show data");
-  var s = 0;
-  arr.forEach(function (val, idx, arr) {
-    s += val;
-  }, 0);
-  // console.log("total income is "+s);
-  return s;
-  // return 0;
-}
 
 class Page2 extends Component {
+  constructor(props) {
+    super(props);
+
+    //In essence, we will create a copy of the Firebase database and store it in state dbData[]
+    this.state = {
+      dataList: data
+    };
+  } // end constructor
   piechartClick() {
     $("#piechart").toggle();
   }
@@ -46,10 +39,32 @@ class Page2 extends Component {
       </div>
     );
   }
-  renderTable() {
+  // getInvoice(){
+  //   var list=userData;
+  //   var invoiceArr=list.map(function(e){
+  //     return `${e.price};
+  //   })
+  //   console.log(invoiceArr);
+  // }
+  filterCata(e) {
+    return function (object) {
+      return object.catagory === "fixed";
+    };
+  }
+  renderTable(userData) {
+    var list = userData;
     return (
       <div className="showTable">
         <strong>Fixrd invoice</strong>
+        <table className="table table-sm table-bordered">
+          <thead>
+            <tr>
+              <th>invoice fee</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
     );
   }
