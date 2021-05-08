@@ -15,16 +15,12 @@ import userData from ".././localData.json";
 
 const data = userData;
 
-function filterCata(e) {
+function filterFixedData(e) {
   return function (object) {
     return object.catagory === e;
   };
 }
 
-function getYearData() {
-  var year = $("#typeYear").val();
-  console.log(year);
-}
 class Page2 extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +30,7 @@ class Page2 extends Component {
       dataList: data
     };
     this.renderTable = this.renderTable.bind(this);
+    this.getYearData=this.getYearData.bind(this);
   } // end constructor
   piechartClick() {
     $("#piechart").toggle();
@@ -41,29 +38,7 @@ class Page2 extends Component {
   barchartClick() {
     $("#piechart").toggle();
   }
-  test321() {
-    var name = "333";
-
-    return (
-      <div>
-        <p>hahaha{JSON.stringify(data)}</p>
-      </div>
-    );
-  }
-  // getInvoice(){
-  //   var list=userData;
-  //   var invoiceArr=list.map(function(e){
-  //     return `${e.price};
-  //   })
-  //   console.log(invoiceArr);
-  // }
-  getMonthInvoice() {}
-
-  // filterCata(e) {
-  //   return function (object) {
-  //     return object.catagory === e;
-  //   };
-  // }
+ 
   renderTable(userData) {
     var list = this.state.dataList;
     return (
@@ -77,7 +52,7 @@ class Page2 extends Component {
             </tr>
           </thead>
           <tbody>
-            {list.filter(filterCata("fixed")).map((e) => {
+            {list.filter(filterFixedData("fixed")).map((e) => {
               return (
                 <tr key={e.id}>
                   <td>{e.price}</td>
@@ -90,9 +65,14 @@ class Page2 extends Component {
       </div>
     );
   }
-
+  getYearData() {
+    var list = this.state.dataList;
+    var year = $("#typeYear").val();
+    var filterList=list.filter(filterFixedData(year));
+    console.log(JSON.stringify(filterList));
+  }
   render() {
-    console.log(data);
+    console.log(JSON.stringify(data));
 
     return (
       <div className="App">
@@ -100,9 +80,9 @@ class Page2 extends Component {
         {this.renderTable()}
         <div className="chooseYear">
           <p>Please type in the year of invoice:</p>
-          <input type="year" id="typeYear" placeholder="2019-2023" />
-          {$("#typeYear").val()}
-          <button onClick={getYearData()}>
+          <input type="text" id="typeYear" placeholder="2019-2023" />
+         
+          <button onClick={this.getYearData}>
           onClick
           </button>
          
