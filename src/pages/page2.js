@@ -68,6 +68,20 @@ class Page2 extends Component {
       </div>
     );
   }
+  getFixedTotal(){
+    var fixedTotal=0;
+    var unfixedTotal=0;
+      for(var i=0;i<data.length;i++){
+        if(data[i].catagory==="fixed"){
+        fixedTotal+=data[i].price;
+        }else{
+        unfixedTotal+=data[i].price;
+        }
+      }     
+      console.log("fixed total"+fixedTotal);
+      console.log("non fixed total"+unfixedTotal);
+  }
+
   getYearData() {
     var list = this.state.dataList;
     var year = $("#typeYear").val();
