@@ -123,13 +123,6 @@ class App extends Component {
               >
                 Firebase Test
               </Link>
-              <Link
-                to="/option6"
-                className="link"
-                onClick={this.showMenu.bind(this, "demo")}
-              >
-                page3demo
-              </Link>
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
@@ -138,10 +131,9 @@ class App extends Component {
                 <Route exact path="/" component={page2} />
                 <Route exact path="/option2" component={page1} />
                 <Route exact path="/option1" component={page2} />
-                <Route exact path="/option3" component={page3} />
+                <Route exact path="/option3" component={page31} />
                 <Route exact path="/option4" component={page4} />
                 <Route exact path="/option5" component={page5} />
-                <Route exact path="/option6" component={page31} />
               </Switch>
             </div>
           </Router>
