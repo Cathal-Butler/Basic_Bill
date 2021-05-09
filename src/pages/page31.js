@@ -65,17 +65,28 @@ class page31 extends Component {
     console.log("add data" + JSON.stringify(data));
   }
   deleteInvoice(e) {
-    console.log(111);
+   
     const index = e.target.getAttribute("data-index");
-    //date:list 对应的index的 date
+    //date:list 对应的index的 date 
+    console.log("index"+index);
     const list = this.state.dataList;
+    var location=0;
+for(var i=0;i<list.length;i++){
+
+  if(list[i].id===index){
+break;
+  }
+location++;
+}
+console.log("location"+location);
     $("#" + index).remove();
+    let refreshV = this.refresh.bind(this);
+    refreshV();
 
     this.setState({ dataList: list });
     console.log("delete" + JSON.stringify(index));
   }
   refresh() {
-    console.log(111);
     this.setState({ dataList: data });
   }
 

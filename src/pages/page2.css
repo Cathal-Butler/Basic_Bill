@@ -4,6 +4,6 @@ display: none;
 #typeYear{
   display: none;
 }
-#messageBox{
-  display: inline;
+#yearSearchWarning{
+  display: none;
 }

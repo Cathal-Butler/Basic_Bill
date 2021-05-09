@@ -74,17 +74,17 @@ class Page2 extends Component {
     var list = this.state.dataList;
     var year = $("#typeYear").val();
     var filterList = list.filter(filterYear(year));
-    console.log(JSON.stringify(FileList));
+    console.log(JSON.stringify(filterList));
     var jsonLength = filterList.length;
     console.log(jsonLength);
-    for(var item in filterList ){
-      jsonLength++;
-    }
     if (jsonLength===0) {
-      $("#exampleModalCenter").show();
+      $("#yearSearchWarning").show();
     }
+
   }
-  
+  testTotal(){
+    
+  }
   
 
   render() {
@@ -98,7 +98,7 @@ class Page2 extends Component {
           <p>Please type in the year of invoice:</p>
           <input type="text" id="typeYear" placeholder="2019-2023" />
 
-          <button onClick={this.testBtnClick}>onClick</button>
+          <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
           <nav
@@ -133,45 +133,26 @@ class Page2 extends Component {
             </ul>
           </nav>
          
+    <div class="yearSearchWarning" id="yearSearchWarning" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Warning</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>There is no data in specified year.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <div
-            class="modal fade"
-            id="exampleModalCenter"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalCenterTitle">
-                    Warning
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>There is no invoice for the specified year</p>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     );
