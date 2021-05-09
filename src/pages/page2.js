@@ -35,7 +35,9 @@ class Page2 extends Component {
     //In essence, we will create a copy of the Firebase database and store it in state dbData[]
     this.state = {
       dataList: data,
-      yearList:new Array(12)
+      yearList:new Array(12),
+      fix:0,
+      unfix:0
     };
     this.renderTable = this.renderTable.bind(this);
     this.getYearData = this.getYearData.bind(this);
@@ -68,6 +70,8 @@ class Page2 extends Component {
       </div>
     );
   }
+
+
   getFixedTotal(){
     var fixedTotal=0;
     var unfixedTotal=0;
@@ -78,8 +82,8 @@ class Page2 extends Component {
         unfixedTotal+=data[i].price;
         }
       }     
-      console.log("fixed total"+fixedTotal);
-      console.log("non fixed total"+unfixedTotal);
+    this.setState({fix:fixedTotal});
+    this.setState({unfix:unfixedTotal});
   }
 
   getYearData() {
@@ -131,7 +135,10 @@ class Page2 extends Component {
   barchartClick() {
     $("#barchart").toggle();
   }
-
+  piechartClick() {
+    $("#piechart").toggle();
+  }
+  
   render() {
     console.log(JSON.stringify(data));
 
@@ -143,7 +150,7 @@ class Page2 extends Component {
           <p>Please type in the year of invoice:</p>
           <input type="text" id="typeYear" placeholder="2019-2023" />
 
-          <button onClick={this.testTotal}>getTotal</button>
+          <button onClick={this.getFixedTotal}>getTotal</button>
 
           <button onClick={this.getYearData}>onClick</button>
         </div>
@@ -192,6 +199,49 @@ class Page2 extends Component {
             </div>
           </div>
         </div>
+
+        <div id="piechart" display="none">
+          <ReactEcharts
+            option={{
+              tooltip: {
+                trigger: "item",
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+              },
+              legend: {
+                orient: "vertical",
+                left: 10,
+                data: ["fixed invoice", "flexible invoice"]
+              },
+              series: [
+                {
+                  name: "Utilization",
+                  type: "pie",
+                  radius: ["50%", "70%"],
+                  avoidLabelOverlap: false,
+                  label: {
+                    show: false,
+                    position: "center"
+                  },
+                  emphasis: {
+                    label: {
+                      show: true,
+                      fontSize: "30",
+                      fontWeight: "bold"
+                    }
+                  },
+                  labelLine: {
+                    show: false
+                  },
+                  data: [
+                    { value:this.state.fix, name: "fixed invoice" },
+                    { value: this.state.unfix, name: "flexible invoice" }
+                  ]
+                }
+              ]
+            }}
+          />
+        </div>
+
 
         <div id="barchart" display="none">
           <ReactEcharts
