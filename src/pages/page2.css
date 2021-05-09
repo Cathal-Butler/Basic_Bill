@@ -9,3 +9,19 @@ display: none;
   display: none;
 
 }
+#pieChart{
+  left:0%;
+}
+
+#barChart{
+left:100%
+
+}
+#FixedInvoiceTable{
+
+width:50%;
+}
+#unfixedInvoiceTable{
+  
+  width:50%;
+}

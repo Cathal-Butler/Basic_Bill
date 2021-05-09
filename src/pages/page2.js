@@ -23,6 +23,13 @@ function filterFixedData(e) {
     return object.catagory === e;
   };
 }
+
+function filterUnfixedData(e) {
+  return function (object) {
+    return object.catagory !== e;
+  };
+}
+
 function filterYear(e) {
   return function (object) {
     return object.date.substring(0, 4) === e;
@@ -47,7 +54,8 @@ class Page2 extends Component {
   renderTable(userData) {
     var list = this.state.dataList;
     return (
-      <div className="showTable">
+      <div className="showTable" 
+            id="FixedInvoiceTable">
         <strong>Fixed invoice</strong>
         <table className="table table-sm table-bordered">
           <thead>
@@ -70,22 +78,35 @@ class Page2 extends Component {
       </div>
     );
   }
-
-
-  // getFixedTotal(){
-  //   var fixedTotal=0;
-  //   var unfixedTotal=0;
-  //     for(var i=0;i<data.length;i++){
-  //       if(data[i].catagory==="fixed"){
-  //       fixedTotal+=data[i].price;
-  //       }else{
-  //       unfixedTotal+=data[i].price;
-  //       }
-  //     }     
-  //   this.setState({fix:fixedTotal});
-  //   this.setState({unfix:unfixedTotal});
-  // }
-
+ 
+  renderUnfixedTable(userData) {
+    var list = this.state.dataList;
+    return (
+      <div className="showTable" 
+            id="unfixedInvoiceTable">
+        <strong>Flexible invoice</strong>
+        <table className="table table-sm table-bordered">
+          <thead>
+            <tr>
+              <th>invoice fee</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {list.filter(filterUnfixedData("fixed")).map((e) => {
+              return (
+                <tr key={e.id}>
+                  <td>{e.price}</td>
+                  <td>{e.date}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+  
   getYearData() {
     var list = this.state.dataList;
     var year = $("#typeYear").val();
@@ -158,6 +179,7 @@ class Page2 extends Component {
       <div className="App">
         {console.log(JSON.stringify(data))}
         {this.renderTable()}
+        {this.renderUnfixedTable()}
         <div className="chooseYear">
           <p>Please type in the year of invoice:</p>
           <input type="text" id="typeYear" placeholder="2019-2023" />
