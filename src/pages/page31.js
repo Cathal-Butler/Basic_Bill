@@ -70,20 +70,13 @@ class page31 extends Component {
     //date:list 对应的index的 date 
     console.log("index"+index);
     const list = this.state.dataList;
-    var location=0;
-for(var i=0;i<list.length;i++){
-
-  if(list[i].id===index){
-break;
-  }
-location++;
-}
-console.log("location"+location);
-    $("#" + index).remove();
-    let refreshV = this.refresh.bind(this);
-    refreshV();
-
-    this.setState({ dataList: list });
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].id == index) {
+       data.splice(data[i-1],1);
+      }
+    }
+    
+    this.setState({ dataList: data});
     console.log("delete" + JSON.stringify(index));
   }
   refresh() {
