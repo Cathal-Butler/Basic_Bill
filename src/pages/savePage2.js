@@ -78,9 +78,9 @@ class Page2 extends Component {
                 formatter: "{a} <br/>{b}: {c} ({d}%)"
               },
               legend: {
-                orient: "vertical",
-                left: 10,
-                data: ["income", "expense"]
+                top: '5%',
+                left: 'center'
+               
               },
               series: [
                 {
@@ -104,7 +104,7 @@ class Page2 extends Component {
                   },
                   data: [
                     { value: input, name: "income" },
-                    { value: output, name: "expense" }
+                    { value:output, name: "expense" }
                   ]
                 }
               ]

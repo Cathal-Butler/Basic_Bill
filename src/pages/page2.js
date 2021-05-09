@@ -133,10 +133,10 @@ class Page2 extends Component {
     $("#yearSearchWarning").hide();
   }
   barchartClick() {
-    $("#barchart").toggle();
+    $("#barChart").toggle();
   }
   piechartClick() {
-    $("#piechart").toggle();
+    $("#pieChart").toggle();
   }
   
   render() {
@@ -155,7 +155,7 @@ class Page2 extends Component {
           <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
-        <button type="button" class="btn btn-secondary" >pie Chart</button>
+        <button type="button" class="btn btn-secondary" onClick={this.piechartClick()} >pie Chart</button>
         <br/>
         <br/>
         <button type="button" class="btn btn-secondary" onClick={this.barchartClick()}>bar chart</button>
@@ -200,50 +200,54 @@ class Page2 extends Component {
           </div>
         </div>
 
-        <div id="piechart" display="none">
-          <ReactEcharts
-            option={{
-              tooltip: {
-                trigger: "item",
+<div id="pieChart">
+<ReactEcharts
+           option = {{
+            tooltip: {
+                trigger: 'item',
                 formatter: "{a} <br/>{b}: {c} ({d}%)"
-              },
-              legend: {
-                orient: "vertical",
-                left: 10,
-                data: ["fixed invoice", "flexible invoice"]
-              },
-              series: [
+            },
+            legend: {
+                top: '5%',
+                left: 'center'
+            },
+            series: [
                 {
-                  name: "Utilization",
-                  type: "pie",
-                  radius: ["50%", "70%"],
-                  avoidLabelOverlap: false,
-                  label: {
-                    show: false,
-                    position: "center"
-                  },
-                  emphasis: {
+                    name: "Utilization",
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
                     label: {
-                      show: true,
-                      fontSize: "30",
-                      fontWeight: "bold"
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: '40',
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: [
+                        {value: this.state.fix, name: "fixed invoice"},
+                        {value:this.state.unfix, name: "unfixed invoice"}
+                      ]
                     }
-                  },
-                  labelLine: {
-                    show: false
-                  },
-                  data: [
-                    { value:this.state.fix, name: "fixed invoice" },
-                    { value: this.state.unfix, name: "flexible invoice" }
                   ]
-                }
-              ]
-            }}
-          />
-        </div>
+                }}
+              />
+</div>
 
+       
+          
+      
+      
 
-        <div id="barchart" display="none">
+<div id="barChart">
+
           <ReactEcharts
             option={{
               tooltip: {
@@ -254,7 +258,7 @@ class Page2 extends Component {
                 }
               },
               legend: {
-                data: ["invoice", ]
+                data: ["invoice"]
               },
               grid: {
                 left: "4%",
@@ -306,7 +310,10 @@ class Page2 extends Component {
               ]
             }}
           />
-        </div>
+       
+
+</div>
+       
       </div>   
     );
   }
