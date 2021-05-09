@@ -13,6 +13,7 @@ import "echarts/lib/component/legend";
 import "echarts/lib/component/markPoint";
 import userData from ".././localData.json";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import yesBtn from "./img/yesBtn.png";
 const data = userData;
 
 function filterFixedData(e) {
@@ -37,10 +38,10 @@ class Page2 extends Component {
     this.getYearData=this.getYearData.bind(this);
   } // end constructor
   piechartClick() {
-    $("#piechart").toggle();
+    $("#pieChart").toggle();
   }
   barchartClick() {
-    $("#piechart").toggle();
+    $("#barChart").toggle();
   }
  
   renderTable(userData) {
@@ -89,7 +90,29 @@ class Page2 extends Component {
           <button onClick={this.getYearData}>
           onClick
           </button>
-         
+        </div>
+        <div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper"
+role="navigation">
+  <ul class="nav sidebar-nav">
+    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-plus"> </i> Dropdown <span class="caret"> </span> </a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-header"> Dropdown heading </li>
+        <li> <a href="#typeYear"> Action </a> </li>
+        <li> <a href="#submitBtn"> Another action </a> </li>
+        <li> <a href="#"> Something else here </a> </li>
+        <li> <a href="#"> Separated link </a> </li>
+        <li> <a href="#"> One more separated link </a> </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+{/* <img
+            id="submitBtn"
+            className="editBoxBtn"
+            src={yesBtn}
+            alt=""
+          /> */}
         </div>
       </div>
     );
