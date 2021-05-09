@@ -58,6 +58,7 @@ class page31 extends Component {
       data.push({ id: ++i, catagory: cata, price: info, date: month });
     } else {
       $("#messageBox").show();
+     
     }
 
     //console.log(JSON.stringify(data));
@@ -144,6 +145,9 @@ class page31 extends Component {
   yesBtnClick() {
     $("#messageBox").hide();
   }
+  closeAlert(){
+    $("#isWarning").hide();
+  }
   render() {
     return (
       <div>
@@ -206,6 +210,11 @@ class page31 extends Component {
           <input type="month" id="editDate" />
           <img id="submitBtn" className="editBoxBtn" src={yesBtn} alt="" />
         </div>
+
+
+       
+
+
 
         <div>{console.log(JSON.stringify(data))}</div>
       </div>

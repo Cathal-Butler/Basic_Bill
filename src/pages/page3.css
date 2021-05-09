@@ -6,6 +6,9 @@
 #invoiceListhead {
   background-color: pink;
 }
+#isWarning{
+  display: none;
+}
 #invoiceListbody {
 }
 #currentIncome {

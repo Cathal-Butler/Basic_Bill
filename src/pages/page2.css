@@ -2,8 +2,10 @@
 display: none;
 }
 #typeYear{
-  display: none;
+  display: inline;
 }
+
 #yearSearchWarning{
   display: none;
+
 }
