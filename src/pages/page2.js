@@ -192,7 +192,7 @@ class Page2 extends Component {
                 }
               },
               legend: {
-                data: ["balance", "expense", "income"]
+                data: ["invoice", ]
               },
               grid: {
                 left: "4%",
@@ -202,12 +202,12 @@ class Page2 extends Component {
               },
               xAxis: [
                 {
-                  type: "value"
+                  type: "price"
                 }
               ],
               yAxis: [
                 {
-                  type: "category",
+                  type: "Month",
                   axisTick: {
                     show: false
                   },
@@ -238,7 +238,7 @@ class Page2 extends Component {
                   emphasis: {
                     focus: "series"
                   },
-                  data: [this.state.yearList]
+                  data: Array.from(this.state.yearList)
                 }
               
               ]
