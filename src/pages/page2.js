@@ -72,19 +72,19 @@ class Page2 extends Component {
   }
 
 
-  getFixedTotal(){
-    var fixedTotal=0;
-    var unfixedTotal=0;
-      for(var i=0;i<data.length;i++){
-        if(data[i].catagory==="fixed"){
-        fixedTotal+=data[i].price;
-        }else{
-        unfixedTotal+=data[i].price;
-        }
-      }     
-    this.setState({fix:fixedTotal});
-    this.setState({unfix:unfixedTotal});
-  }
+  // getFixedTotal(){
+  //   var fixedTotal=0;
+  //   var unfixedTotal=0;
+  //     for(var i=0;i<data.length;i++){
+  //       if(data[i].catagory==="fixed"){
+  //       fixedTotal+=data[i].price;
+  //       }else{
+  //       unfixedTotal+=data[i].price;
+  //       }
+  //     }     
+  //   this.setState({fix:fixedTotal});
+  //   this.setState({unfix:unfixedTotal});
+  // }
 
   getYearData() {
     var list = this.state.dataList;
@@ -124,6 +124,17 @@ class Page2 extends Component {
     console.log("month invoice"+ monthInvoice);
     this.setState({yearList:monthInvoice});
    
+    var fixedTotal=0;
+    var unfixedTotal=0;
+      for(var i=0;i<data.length;i++){
+        if(data[i].catagory==="fixed"){
+        fixedTotal+=data[i].price;
+        }else{
+        unfixedTotal+=data[i].price;
+        }
+      }     
+    this.setState({fix:fixedTotal});
+    this.setState({unfix:unfixedTotal});
   }
   
     
@@ -136,6 +147,7 @@ class Page2 extends Component {
     $("#barChart").toggle();
   }
   piechartClick() {
+   
     $("#pieChart").toggle();
   }
   
@@ -155,12 +167,13 @@ class Page2 extends Component {
           <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
-        <button type="button" class="btn btn-secondary" onClick={this.piechartClick()} >pie Chart</button>
+{/* 
+        <button type="button" class="btn btn-secondary" onClick={this.piechartClick()}  >pie Chart</button>
         <br/>
         <br/>
         <button type="button" class="btn btn-secondary" onClick={this.barchartClick()}>bar chart</button>
         <br/>
-        <br/>
+        <br/> */}
       
 
           <div
@@ -200,7 +213,7 @@ class Page2 extends Component {
           </div>
         </div>
 
-<div id="pieChart">
+<div id="pieChart" >
 <ReactEcharts
            option = {{
             tooltip: {
@@ -246,7 +259,7 @@ class Page2 extends Component {
       
       
 
-<div id="barChart">
+<div id="barChart" >
 
           <ReactEcharts
             option={{
