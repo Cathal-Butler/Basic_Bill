@@ -40,12 +40,7 @@ class Page2 extends Component {
     this.renderTable = this.renderTable.bind(this);
     this.getYearData = this.getYearData.bind(this);
   } // end constructor
-  piechartClick() {
-    $("#pieChart").toggle();
-  }
-  barchartClick() {
-    $("#barChart").toggle();
-  }
+  
 
   renderTable(userData) {
     var list = this.state.dataList;
@@ -122,6 +117,7 @@ class Page2 extends Component {
   barchartClick() {
     $("#barchart").toggle();
   }
+
   render() {
     console.log(JSON.stringify(data));
 
@@ -138,7 +134,7 @@ class Page2 extends Component {
           <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
-        <button type="button" class="btn btn-secondary" onClick={this.piechartClick()}>pie Chart</button>
+        <button type="button" class="btn btn-secondary" >pie Chart</button>
         <br/>
         <br/>
         <button type="button" class="btn btn-secondary" onClick={this.barchartClick()}>bar chart</button>
@@ -183,7 +179,7 @@ class Page2 extends Component {
           </div>
         </div>
 
-        <div id="linechart" display="none">
+        <div id="barchart" display="none">
           <ReactEcharts
             option={{
               tooltip: {
@@ -204,12 +200,12 @@ class Page2 extends Component {
               },
               xAxis: [
                 {
-                  type: "price"
+                  type: "value"
                 }
               ],
               yAxis: [
                 {
-                  type: "Month",
+                  type: "category",
                   axisTick: {
                     show: false
                   },
