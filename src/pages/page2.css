@@ -1,6 +1,9 @@
 #piechart{
 display: none;
 }
-.typeYear{
+#typeYear{
   display: none;
+}
+#messageBox{
+  display: inline;
 }
