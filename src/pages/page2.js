@@ -93,20 +93,18 @@ class Page2 extends Component {
         </div>
         <div>
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper"
-role="navigation">
-  <ul class="nav sidebar-nav">
-    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-plus"> </i> Dropdown <span class="caret"> </span> </a>
-      <ul class="dropdown-menu" role="menu">
-        <li class="dropdown-header"> Dropdown heading </li>
-        <li> <a href="#typeYear"> Action </a> </li>
-        <li> <a href="#submitBtn"> Another action </a> </li>
-        <li> <a href="#"> Something else here </a> </li>
-        <li> <a href="#"> Separated link </a> </li>
-        <li> <a href="#"> One more separated link </a> </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        role="navigation">
+          <ul class="nav sidebar-nav">
+            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-fw fa-plus"> </i> Dropdown <span class="caret"> </span> </a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header"> Charts </li>
+                <li> <a href="#typeYear"> Pie Chart </a> </li>
+                <li> <a href="#submitBtn"> Bar Chart </a> </li>
+                <li> <a href="#"> Tables </a> </li>
+              </ul>
+             </li>
+            </ul>
+          </nav>
 {/* <img
             id="submitBtn"
             className="editBoxBtn"
