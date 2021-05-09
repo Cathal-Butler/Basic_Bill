@@ -22,6 +22,7 @@ class App extends Component {
       //So firebase can handle users who are logged in v. not logged in
       authenticated: false,
       currentUser: null
+      //currentUser: null
     };
   }
 
