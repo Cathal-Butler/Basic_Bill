@@ -138,11 +138,13 @@ class Page2 extends Component {
           <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
-        
-        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-secondary" onClick={this.piechartClick()}>pie Chart</button>
         <br/>
         <br/>
-        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-secondary" onClick={this.barchartClick()}>bar chart</button>
+        <br/>
+        <br/>
+      
 
           <div
             class="yearSearchWarning"
@@ -229,7 +231,7 @@ class Page2 extends Component {
               ],
               series: [
                 {
-                  name: "balance",
+                  name: "price",
                   type: "bar",
                   label: {
                     show: true,
