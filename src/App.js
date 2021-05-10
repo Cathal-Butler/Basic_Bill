@@ -20,7 +20,6 @@ class App extends Component {
       //So firebase can handle users who are logged in v. not logged in
       authenticated: false,
       currentUser: null
-      //currentUser: null
     };
   }
 
@@ -51,16 +50,10 @@ class App extends Component {
         {this.state.authenticated && ( //Once a user has logged in, display the navbar
           <div id="nav">
             <div id="menuText">Home/Dashboard</div>
-            {/* <img
-              id="menuBtn"
-              src="https://images.unsplash.com/photo-1586941962765-d3896cc85ac8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-              onClick={this.showMenu.bind(this, "")}
-              alt=""
-            /> */}
           </div>
         )}
 
-        {this.state.authenticated && (
+        {this.state.authenticated && ( //Navbar hamburger for navigating through the application
           <div id="container" onClick={this.showMenu.bind(this, "")}>
             <div class="hamburger"></div>
             <div class="hamburger"></div>
@@ -72,8 +65,6 @@ class App extends Component {
           /*If user is not logged in, display the logon component */ !this.state
             .authenticated && <Logon />
         }
-
-        {/* {!this.state.authenticated && <Signup />} */}
 
         {this.state.authenticated && ( //Display all of the pages if the user is logged in.
           <Router>
@@ -114,14 +105,6 @@ class App extends Component {
               >
                 Logout
               </Link>
-
-              {/* <Link //This was a demo page for firebase testing
-                to="/option5"
-                className="link"
-                onClick={this.showMenu.bind(this, "Firebase Test")}
-              >
-                Firebase Test
-              </Link> */}
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
@@ -132,7 +115,6 @@ class App extends Component {
                 <Route exact path="/option1" component={page2} />
                 <Route exact path="/option3" component={page31} />
                 <Route exact path="/option4" component={page4} />
-                {/* <Route exact path="/option5" component={page5} /> //Demo page for firebase testing */}
               </Switch>
             </div>
           </Router>
