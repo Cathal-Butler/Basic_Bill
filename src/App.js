@@ -7,11 +7,10 @@ import home from "./pages/home"; //Importing the pages for routing
 import page1 from "./pages/page1";
 import page2 from "./pages/page2";
 import page4 from "./pages/page4";
-// import page5 from "./pages/page5"; //Demo page for firebase testing
-import Logon from "./Logon"; //Importing logon component
-import Signup from "./Signup"; //IMporting signup component
-import Firebase from "firebase"; //App is connect to realtime firebase
 import page31 from "./pages/page31";
+import Logon from "./Logon"; //Importing logon component
+import Signup from "./Signup"; //Importing signup component
+import Firebase from "firebase"; //App is connect to realtime firebase
 
 class App extends Component {
   constructor(props) {
