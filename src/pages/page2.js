@@ -184,8 +184,7 @@ class Page2 extends Component {
           <p>Please type in the year of invoice:</p>
           <input type="text" id="typeYear" placeholder="2019-2023" />
 
-          <button onClick={this.getFixedTotal}>getTotal</button>
-
+         
           <button onClick={this.getYearData}>onClick</button>
         </div>
         <div>
