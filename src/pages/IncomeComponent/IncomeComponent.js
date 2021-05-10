@@ -1,10 +1,9 @@
 import React from "react";
 import moment from "moment";
 
-//Component for entering income
 const income = (props) => {
-  let income = props.income; //necessary for parent child communication
-  let onForm2Change = props.onForm2Change; //necessary for parent child communication
+  let income = props.income;
+  let onForm2Change = props.onForm2Change;
   let datei = props.datei;
   let onDateiChange = props.onDateiChange;
   let addIncome = props.addIncome;
@@ -18,16 +17,18 @@ const income = (props) => {
         ", you have submitted an income of €" +
         income +
         " on the " +
-        moment(datei).format(`Do of MMMM YYYY`) //Human readable format
+        moment(datei).format(`Do of MMMM YYYY`) //Date human readable format
     );
   }
 
   function stopSubmit() {
+    //Validation function
     //Users will only be allowed submit an expense or an income if:
     //1. The date is today or in the past
     //2. The date is not blank
     //3. The income is not blank
-    //4. Returns true if any of them are not met
+    //4. Income is not a negative value
+    // Returns true if any conditions are not met
     const currentTime = moment();
     if (
       moment(datei) > currentTime ||
@@ -51,7 +52,7 @@ const income = (props) => {
           type="number"
           placeholder="€"
           value={income}
-          onChange={onForm2Change} //Calls this function when input changed
+          onChange={onForm2Change}
         />
       </form>
       <form>
@@ -77,7 +78,7 @@ const income = (props) => {
         </p>
       )}
 
-      {!stopSubmit() && ( //When all conditions of allowSubmit are met, show this button
+      {!stopSubmit() && ( //When all conditions of allowSubmit are met button enabled
         <button
           onClick={() => {
             addIncome();

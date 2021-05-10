@@ -1,10 +1,9 @@
 import React from "react";
-import moment from "moment"; //Moment dependency added to allow date be viewed in more User Friendly Way
-//Component for entering expense
+import moment from "moment"; //Readable date
 
 const expense = (props) => {
-  let expense = props.expense; //necessary for parent-child communication
-  let onFormChange = props.onFormChange; //necessary for parent child communication
+  let expense = props.expense;
+  let onFormChange = props.onFormChange;
   let date = props.date;
   let onDateChange = props.onDateChange;
   let addExpense = props.addExpense;
@@ -12,21 +11,24 @@ const expense = (props) => {
   let currentUserEmail = props.currentUser.email;
 
   function submitAlert() {
+    //Confirmation message when a user submits an expense
     alert(
       "Good work " +
         currentUserEmail +
         ", you have submitted an expense of €" +
         expense +
         " on the " +
-        moment(date).format(`Do of MMMM YYYY`) //Human readable format
+        moment(date).format(`Do of MMMM YYYY`)
     );
   }
 
   function stopSubmit() {
+    //Validation function
     //Users will only be allowed submit an expense or an income if:
     //1. The date is today or in the past
     //2. The date is not blank
-    //3. The income is not blank
+    //3. The expense is not blank
+    //4. The expense is not a negative value
     // Returns true if any of them are not met
     const currentTime = moment();
     if (
@@ -81,7 +83,7 @@ const expense = (props) => {
         </button>
       )}
 
-      {stopSubmit() && ( //Shows unless all 3 requirements are met
+      {stopSubmit() && ( //Let's user know why they are not meeting the validation requirements
         <p>
           {" "}
           <b>
@@ -92,7 +94,7 @@ const expense = (props) => {
         </p>
       )}
 
-      {!stopSubmit() && ( //when all conditions of stopSubmit are met, condition will be false so submission will be allowed
+      {!stopSubmit() && ( //When valid data is entered, button is enabled
         <button
           id="submitExpense"
           onClick={() => {
