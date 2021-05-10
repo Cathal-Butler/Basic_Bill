@@ -154,7 +154,7 @@ class Home extends Component {
 
         {this.state.dbData.length > 0 && (
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 p-5">
               <div class="card text-white card text-center bg-success mb-3">
                 <div class="card-body">
                   <h3 class="card-title">Latest Income:</h3>
@@ -180,7 +180,7 @@ class Home extends Component {
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 p-5">
               <div class="card text-white card text-center bg-danger mb-3">
                 <div class="card-body">
                   <h3 class="card-title">Latest Expense:</h3>
