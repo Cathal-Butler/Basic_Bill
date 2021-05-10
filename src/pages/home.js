@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import myFirebase from ".././myFirebaseConfig";
 import Firebase from "firebase";
-import "./home.css";
 import moment from "moment";
 
 /*Perhaps this page should be changed to a Dashboard page if we are going to stick with the Logon component */
