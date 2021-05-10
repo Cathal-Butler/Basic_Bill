@@ -6,7 +6,6 @@ import $ from "jquery";
 import home from "./pages/home"; //Importing the pages for routing
 import page1 from "./pages/page1";
 import page2 from "./pages/page2";
-import page3 from "./pages/page3";
 import page4 from "./pages/page4";
 // import page5 from "./pages/page5"; //Demo page for firebase testing
 import Logon from "./Logon"; //Importing logon component
