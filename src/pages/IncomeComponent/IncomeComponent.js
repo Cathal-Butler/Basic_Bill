@@ -39,11 +39,14 @@ const income = (props) => {
   }
 
   return (
-    <div class="card body">
+    <div
+      class="card-body"
+      style={{ textAlign: "left", backgroundColor: "rgb(224 247 230)" }}
+    >
       <h2>Income</h2>
 
       <form>
-        <label>Amount: </label>
+        <label style={{ width: "10.5rem" }}>Amount: </label>
         <input
           type="number"
           placeholder="€"
@@ -52,7 +55,7 @@ const income = (props) => {
         />
       </form>
       <form>
-        <label>Input Date of Income: </label>
+        <label style={{ width: "10.5rem" }}>Input Date of Income: </label>
         <input type="date" value={datei} onChange={onDateiChange}></input>
       </form>
       <p>

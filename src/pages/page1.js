@@ -5,6 +5,7 @@ import Income from "./IncomeComponent/IncomeComponent";
 import myFirebase from ".././myFirebaseConfig";
 import Firebase from "firebase";
 import { timers } from "jquery";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Page1 extends Component {
   state = {
@@ -175,47 +176,55 @@ class Page1 extends Component {
           </h4>
         )}
         <br />
-        <button
-          class="btn btn-secondary btn-lg btn-block btn-danger"
-          onClick={this.toggleExpenseHandler}
-        >
-          Expense
-        </button>
+        <Container>
+          <Row>
+            <Col>
+              <button
+                class="btn btn-secondary btn-lg btn-block btn-danger"
+                onClick={this.toggleExpenseHandler}
+              >
+                Expense
+              </button>
+              {this.state.showExpense === true ? (
+                //Wrap expense component in a div so it can be hidden or shown using the ternary operator, if true, show it, else :null (hide it)
+                <div>
+                  <Expense
+                    expense={this.state.expense} //Parent-Child Communication
+                    onFormChange={this.onExpenseFormChange}
+                    date={this.state.date}
+                    onDateChange={this.onExpenseDateChange}
+                    addExpense={this.addExpense}
+                    addExpenseDate={this.addExpenseDate}
+                    currentUser={this.state.currentUser}
+                  />
+                </div>
+              ) : null}
+            </Col>
+            <Col>
+              <button
+                class="btn btn-secondary btn-lg btn-block btn-success"
+                onClick={this.toggleIncomeHandler}
+              >
+                Income
+              </button>
+              {this.state.showIncome === true ? (
+                //Wrap income component in a div so it can be hidden or shown using the ternary operator.
+                <div>
+                  <Income
+                    income={this.state.income} //Parent-child communication
+                    onForm2Change={this.onInputFormChange}
+                    datei={this.state.datei}
+                    onDateiChange={this.onIncomeDateChange}
+                    addIncome={this.addIncome}
+                    addIncomeDate={this.addIncomeDate}
+                    currentUser={this.state.currentUser}
+                  />
+                </div>
+              ) : null}
+            </Col>
+          </Row>
+        </Container>
         <br />
-        <button
-          class="btn btn-secondary btn-lg btn-block btn-success"
-          onClick={this.toggleIncomeHandler}
-        >
-          Income
-        </button>
-        {this.state.showExpense === true ? (
-          //Wrap expense component in a div so it can be hidden or shown using the ternary operator, if true, show it, else :null (hide it)
-          <div>
-            <Expense
-              expense={this.state.expense} //Parent-Child Communication
-              onFormChange={this.onExpenseFormChange}
-              date={this.state.date}
-              onDateChange={this.onExpenseDateChange}
-              addExpense={this.addExpense}
-              addExpenseDate={this.addExpenseDate}
-              currentUser={this.state.currentUser}
-            />
-          </div>
-        ) : null}
-        {this.state.showIncome === true ? (
-          //Wrap income component in a div so it can be hidden or shown using the ternary operator.
-          <div>
-            <Income
-              income={this.state.income} //Parent-child communication
-              onForm2Change={this.onInputFormChange}
-              datei={this.state.datei}
-              onDateiChange={this.onIncomeDateChange}
-              addIncome={this.addIncome}
-              addIncomeDate={this.addIncomeDate}
-              currentUser={this.state.currentUser}
-            />
-          </div>
-        ) : null}
       </div> //end of page1 div
     );
   }

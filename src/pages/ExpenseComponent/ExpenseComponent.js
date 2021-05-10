@@ -39,11 +39,14 @@ const expense = (props) => {
   }
 
   return (
-    <div class="card-body">
-      <h2 class="text-white">Expense</h2>
+    <div
+      class="card-body"
+      style={{ textAlign: "left", backgroundColor: "rgb(251 236 236)" }}
+    >
+      <h2>Expense</h2>
 
       <form>
-        <label class="text-white">Amount: </label>
+        <label style={{ width: "10.5rem" }}>Amount: </label>
         <input
           id="expenseAmount"
           type="number"
@@ -54,7 +57,7 @@ const expense = (props) => {
         />
       </form>
       <form>
-        <label class="text-white">Input Date of Expense: </label>
+        <label style={{ width: "10.5rem" }}>Input Date of Expense: </label>
         <input
           id="expenseDate"
           type="date"
@@ -63,13 +66,11 @@ const expense = (props) => {
         />
       </form>
 
-      <p class="text-white">
+      <p>
         The amount entered is: €{expense} on the [
         {moment(date).format(`Do of MMMM YYYY`)}]
       </p>
-      <p class="text-white">
-        If this is correct, click the button below to submit your data:{" "}
-      </p>
+      <p>If this is correct, click the button below to submit your data: </p>
       {stopSubmit() && (
         <button
           id="submitExpense"
@@ -81,7 +82,7 @@ const expense = (props) => {
       )}
 
       {stopSubmit() && ( //Shows unless all 3 requirements are met
-        <p class="text-white">
+        <p>
           {" "}
           <b>
             {" "}
