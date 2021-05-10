@@ -34,23 +34,30 @@
   background-color: white;
   position: absolute;
   left: 100%;
-  top: 10%;
+  /* top: 10%; */
   transform: translate(-100%, 0);
-  width: 80%;
+  width: 14rem;
   z-index: 99;
   display: none;
+  text-align: left;
 }
 
 .link {
   background-color: #cfd8dc;
-  margin: 0.1vh;
+  margin: 5px;
   display: block;
-  height: 8vh;
-  line-height: 8vh;
-  font-size: 5vmin;
+  /* height: 8vh;
+  line-height: 8vh; */
+  font-size: 1rem;
   font-weight: bold;
   font-family: monospace;
   color: rgba(72, 56, 74, 0.78);
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.link:hover {
+  background-color: #f6a7b8;
   text-decoration: none;
 }
 
@@ -64,12 +71,11 @@
 
 .hamburger {
   position: relative;
-  left: 95%;
-  width: 75px;
-  height: 12px;
+  left: 96%;
+  width: 50px;
+  height: 6px;
   background-color: #f6a7b8;
-  margin: 10px 0;
-  border-radius: 20%;
+  margin: 6px 0;
 }
 
 #container {

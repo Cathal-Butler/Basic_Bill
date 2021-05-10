@@ -63,10 +63,10 @@ class App extends Component {
         )}
 
         {this.state.authenticated && (
-          <div id="container">
-            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
-            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
-            <div onClick={this.showMenu.bind(this, "")} class="hamburger"></div>
+          <div id="container" onClick={this.showMenu.bind(this, "")}>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
+            <div class="hamburger"></div>
           </div>
         )}
 
