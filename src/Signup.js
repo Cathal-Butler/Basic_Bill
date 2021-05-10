@@ -7,7 +7,7 @@ class Signup extends Component {
     super(props);
 
     this.state = {
-      //Handles users login state (for Firebase ) */
+      //Handles users login state (for Firebase )
       email: "",
       password: "",
       error: null

@@ -7,7 +7,7 @@ Basic Bill
 Financial Planner/Budget application
 
 @Authors:
-Group 9:
+Team 9:
 Di Yun Yao, Sinead Kilmurray, Pavel Proshkovich, Cathal Butler, Conor Treston
 
 @Purpose:
