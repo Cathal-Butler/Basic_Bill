@@ -18,10 +18,10 @@ left:100%
 
 }
 #FixedInvoiceTable{
-
+margin:auto;
 width:50%;
 }
 #unfixedInvoiceTable{
-  
+  margin:auto;
   width:50%;
 }

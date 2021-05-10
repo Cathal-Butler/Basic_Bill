@@ -88,6 +88,7 @@ class Page2 extends Component {
         <table className="table table-sm table-bordered">
           <thead>
             <tr>
+              <th>catagory</th>
               <th>invoice fee</th>
               <th>Date</th>
             </tr>
@@ -96,6 +97,7 @@ class Page2 extends Component {
             {list.filter(filterUnfixedData("fixed")).map((e) => {
               return (
                 <tr key={e.id}>
+                  <td>{e.catagory}</td>
                   <td>{e.price}</td>
                   <td>{e.date}</td>
                 </tr>
@@ -185,7 +187,7 @@ class Page2 extends Component {
           <input type="text" id="typeYear" placeholder="2019-2023" />
 
          
-          <button onClick={this.getYearData}>onClick</button>
+          <button  type="button" class="btn btn-secondary" onClick={this.getYearData}>Search</button>
         </div>
         <div>
 {/* 
