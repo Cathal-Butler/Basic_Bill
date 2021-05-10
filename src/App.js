@@ -8,7 +8,7 @@ import page1 from "./pages/page1";
 import page2 from "./pages/page2";
 import page3 from "./pages/page3";
 import page4 from "./pages/page4";
-import page5 from "./pages/page5";
+// import page5 from "./pages/page5"; //Demo page for firebase testing
 import Logon from "./Logon"; //Importing logon component
 import Signup from "./Signup"; //IMporting signup component
 import Firebase from "firebase"; //App is connect to realtime firebase
@@ -116,13 +116,14 @@ class App extends Component {
               >
                 Logout
               </Link>
-              <Link
+
+              {/* <Link //This was a demo page for firebase testing
                 to="/option5"
                 className="link"
                 onClick={this.showMenu.bind(this, "Firebase Test")}
               >
                 Firebase Test
-              </Link>
+              </Link> */}
             </div>
             <div id="main">
               <Switch /*This block of code handles the clicking(routing) from page to page in the application */
@@ -133,7 +134,7 @@ class App extends Component {
                 <Route exact path="/option1" component={page2} />
                 <Route exact path="/option3" component={page31} />
                 <Route exact path="/option4" component={page4} />
-                <Route exact path="/option5" component={page5} />
+                {/* <Route exact path="/option5" component={page5} /> //Demo page for firebase testing */}
               </Switch>
             </div>
           </Router>
